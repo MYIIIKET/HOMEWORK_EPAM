@@ -4,3 +4,21 @@
 [submodule "Class_HW_2/task2"]
 	path = Class_HW_2/task2
 	url = https://github.com/MYIIIKET/task2
+[submodule "PDF_HW_1/task1_1"]
+	path = PDF_HW_1/task1_1
+	url = https://github.com/MYIIIKET/task1_1
+[submodule "PDF_HW_1/task1_2"]
+	path = PDF_HW_1/task1_2
+	url = https://github.com/MYIIIKET/task1_2
+[submodule "PDF_HW_1/task1_3"]
+	path = PDF_HW_1/task1_3
+	url = https://github.com/MYIIIKET/task1_3
+[submodule "PDF_HW_1/task1_4"]
+	path = PDF_HW_1/task1_4
+	url = https://github.com/MYIIIKET/task1_4
+[submodule "PDF_HW_1/task1_5"]
+	path = PDF_HW_1/task1_5
+	url = https://github.com/MYIIIKET/task1_5
+[submodule "PDF_HW_1/task1_6"]
+	path = PDF_HW_1/task1_6
+	url = https://github.com/MYIIIKET/task1_6
