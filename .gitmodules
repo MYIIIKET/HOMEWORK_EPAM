@@ -1,3 +1,6 @@
 [submodule "Class_HW_1/task1"]
 	path = Class_HW_1/task1
 	url = https://github.com/MYIIIKET/task1
+[submodule "Class_HW_2/task2"]
+	path = Class_HW_2/task2
+	url = https://github.com/MYIIIKET/task2
