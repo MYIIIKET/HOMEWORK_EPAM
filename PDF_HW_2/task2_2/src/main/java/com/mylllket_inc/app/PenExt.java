@@ -30,6 +30,6 @@ public class PenExt extends Pen {
 
     @Override
     public boolean equals(Object o) {
-        return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+        return super.equals(this) && (this.price == ((PenExt) o).price);
     }
 }

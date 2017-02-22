@@ -12,7 +12,18 @@ public class PenExtTest extends TestCase {
     }
 
     public void testEquals() throws Exception {
+        PenExt a = new PenExt();
+        PenExt b = new PenExt();
+        assertTrue(a.equals(a));
+        assertTrue(a.equals(b));
 
+        a.setPrice(15);
+        assertFalse(a.equals(b));
+        assertFalse(b.equals(a));
+
+        Pen c = new PenExt();
+        a.setPrice(10);
+        assertTrue(a.equals(c));
     }
 
     public void testToString() throws Exception {
