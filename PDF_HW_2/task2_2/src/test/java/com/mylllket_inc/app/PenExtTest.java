@@ -3,6 +3,18 @@ package com.mylllket_inc.app;
 import junit.framework.TestCase;
 
 public class PenExtTest extends TestCase {
+
+    public void testHashCode() throws Exception {
+        PenExt a = new PenExt();
+        PenExt b = new PenExt();
+        System.out.println(a.hashCode());
+        System.out.println(b.hashCode());
+    }
+
+    public void testEquals() throws Exception {
+
+    }
+
     public void testToString() throws Exception {
         PenExt a = new PenExt();
         PenExt b = a;
@@ -10,7 +22,7 @@ public class PenExtTest extends TestCase {
         System.out.println(a.toString());
         System.out.println(b.toString());
 
-        b=new PenExt();
+        b = new PenExt();
         b.setPrice(15);
         System.out.println(b.toString());
 

@@ -18,8 +18,18 @@ public class PenExt extends Pen {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(super.toString()+ "| ");
+        result.append(super.toString() + "| ");
         result.append("Price " + this.price);
         return result.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.price * super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
     }
 }
