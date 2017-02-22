@@ -17,7 +17,7 @@ public class Pen {
 
     @Override
     public boolean equals(Object o) {
-        return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+        return this.getClass().getSimpleName().equals(o.getClass().getSimpleName()) && (this.id == ((Pen) o).id);
     }
 
     @Override
