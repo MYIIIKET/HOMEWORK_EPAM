@@ -2,7 +2,7 @@ package com.mylllket_inc.app;
 
 public class PenExt extends Pen {
     private int price = 0;
-    private static final int defPrice=10;
+    private static final int defPrice = 10;
 
     public PenExt() {
         this.price = defPrice;
@@ -11,7 +11,7 @@ public class PenExt extends Pen {
     public void setPrice(int price) {
         if (price > 0)
             this.price = price;
-        else this.price=defPrice;
+        else this.price = defPrice;
     }
 
     public int getPrice() {
@@ -33,6 +33,6 @@ public class PenExt extends Pen {
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(this) && (this.price == ((PenExt) o).price);
+        return super.equals(o) && (this.price == ((PenExt) o).price);
     }
 }
