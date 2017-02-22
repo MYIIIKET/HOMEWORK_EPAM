@@ -2,13 +2,16 @@ package com.mylllket_inc.app;
 
 public class PenExt extends Pen {
     private int price = 0;
+    private static final int defPrice=10;
 
     public PenExt() {
-        this.price = 10;
+        this.price = defPrice;
     }
 
     public void setPrice(int price) {
-        this.price = price;
+        if (price > 0)
+            this.price = price;
+        else this.price=defPrice;
     }
 
     public int getPrice() {
