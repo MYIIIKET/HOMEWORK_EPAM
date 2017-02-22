@@ -1,6 +1,6 @@
 package com.mylllket_inc.app;
 
-public class Person {
+public class Person implements Stationery {
     private static int id_global = 0;
     private int id;
     private int size = 0;
@@ -9,9 +9,6 @@ public class Person {
     public Person() {
         id_global++;
         id = id_global;
-    }
-
-    public void removePen(int index) {
     }
 
     public String toString() {
@@ -25,6 +22,7 @@ public class Person {
         result.append("Sum: " + sumPrice + "\n");
         return result.toString();
     }
+
 
     public void setStationery(PenExt[] data) {
         size = data.length;
@@ -51,7 +49,6 @@ public class Person {
 
     public void addStationery(PenExt[] data) {
         for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i].toString());
             this.add(data[i]);
         }
     }

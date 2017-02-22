@@ -3,6 +3,7 @@ package com.mylllket_inc.app;
 import junit.framework.TestCase;
 
 public class PersonTest extends TestCase {
+
     public void testAdd() throws Exception {
         Person a = new Person();
         Person b = new Person();
