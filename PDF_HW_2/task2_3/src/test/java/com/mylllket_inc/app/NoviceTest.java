@@ -28,6 +28,7 @@ public class NoviceTest extends TestCase {
 
         Novice b = new Novice.Builder(p1, p2, p3).ballpointPen(p9).build();
         System.out.println(b.toString());
+
     }
 
 }

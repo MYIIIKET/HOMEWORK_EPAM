@@ -10,6 +10,7 @@ public class Novice extends Person {
     private gelPen[] gelPen = null;
     private markerPen[] markerPen = null;
 
+
     public static class Builder {
 
         private ballpointPen[] ballpointPen = new ballpointPen[1];
