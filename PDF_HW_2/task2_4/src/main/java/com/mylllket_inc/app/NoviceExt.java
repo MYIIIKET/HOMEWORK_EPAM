@@ -15,6 +15,11 @@ public class NoviceExt extends Novice implements Sortable {
         return this;
     }
 
+    public NoviceExt sort() {
+        this.list = BubbleSort(this.list, 3);
+        return this;
+    }
+
 
     protected int getSize() {
         return this.list.length;
@@ -41,6 +46,17 @@ public class NoviceExt extends Novice implements Sortable {
                 case 2:
                     for (int j = 0; j < data.length - 1; j++) {
                         if (data[j].getPrice() > data[j + 1].getPrice()) {
+                            temp = data[j];
+                            data[j] = data[j + 1];
+                            data[j + 1] = temp;
+                            flag = true;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int j = 0; j < data.length - 1; j++) {
+                        if ((data[j].getClass().getSimpleName().compareTo(data[j + 1].getClass().getSimpleName()) > 0) &&
+                                (data[j].getPrice() > data[j + 1].getPrice())) {
                             temp = data[j];
                             data[j] = data[j + 1];
                             data[j + 1] = temp;

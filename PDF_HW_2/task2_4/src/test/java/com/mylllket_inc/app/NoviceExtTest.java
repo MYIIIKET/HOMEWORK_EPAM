@@ -16,6 +16,8 @@ public class NoviceExtTest extends TestCase {
         System.out.println(a.toString());
         a = a.sortByPrice();
         System.out.println(a.toString());
+        a = a.sort();
+        System.out.println(a.toString());
     }
 
 }
