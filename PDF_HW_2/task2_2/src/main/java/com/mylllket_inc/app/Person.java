@@ -4,7 +4,7 @@ public class Person implements Stationery {
     private static int id_global = 0;
     private int id;
     private int size = 0;
-    private PenExt[] list;
+    protected PenExt[] list;
 
     public Person() {
         id_global++;

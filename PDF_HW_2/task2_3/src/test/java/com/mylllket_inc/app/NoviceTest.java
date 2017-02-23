@@ -17,17 +17,21 @@ public class NoviceTest extends TestCase {
 
         ballpointPen p9 = new ballpointPen();
 
-        Novice a = new Novice.Builder(p1, p2, p3).
-                capillaryPen(p4).
-                capillaryPen(p5).
-                capillaryPen(p6).
-                fountainPen(p7).
-                fountainPen(p8).
+        Novice a = new Novice.Builder(null, p2, null).
+                addPen(p4).
+                addPen(p5).
+                addPen(p6).
+                addPen(p7).
+                addPen(p8).
+                addPen(new capillaryPen()).
                 build();
         System.out.println(a.toString());
 
-        Novice b = new Novice.Builder(p1, p2, p3).ballpointPen(p9).build();
-        System.out.println(b.toString());
+//        Novice b = new Novice.Builder(p1, p2, p3).
+//                ballpointPen(p9).
+//                addPen(new capillaryPen()).
+//                build();
+//        System.out.println(b.toString());
 
     }
 
