@@ -99,7 +99,7 @@ public class Novice extends Person {
         }
     }
 
-    private Novice(Builder builder) {
+    protected Novice(Builder builder) {
         this.ballpointPen = builder.ballpointPen;
         this.biopolymericPen = builder.biopolymericPen;
         this.capillaryPen = builder.capillaryPen;
