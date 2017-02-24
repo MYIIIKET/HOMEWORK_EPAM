@@ -4,7 +4,7 @@ package com.mylllket_inc.app;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student<T extends Discipline> implements Addable, Marks {
+public class Student<T extends Discipline> implements Marks {
     private String name;
     private Discipline[] discipline;
     private int size = 0;
@@ -19,11 +19,27 @@ public class Student<T extends Discipline> implements Addable, Marks {
         this.name = name;
     }
 
+
     public void addDiscipline(Discipline discipline) {
         size++;
         Discipline[] tmp = new Discipline[size];
-        Student.this.discipline = (Discipline[]) add(Student.this.discipline, tmp, discipline);
+        Student.this.discipline = (Discipline[]) add((T[]) Student.this.discipline, (T[]) tmp, (T) discipline);
         size = Student.this.discipline.length;
+    }
+
+    private T[] add(T[] what, T[] where, T data) {
+        if (what != null) {
+            for (int i = 0; i < what.length; i++) {
+                if (what[i].equals(data))
+                    return what;
+            }
+            System.arraycopy(what, 0, where, 0, what.length);
+            where[where.length - 1] = data;
+            return where;
+        } else {
+            where[where.length - 1] = data;
+            return where;
+        }
     }
 
 
