@@ -2,7 +2,6 @@ package com.mylllket_inc.app;
 
 import junit.framework.TestCase;
 
-
 public class NoviceExtTest extends TestCase {
     public static void main(String[] args) {
         ballpointPen p1 = new ballpointPen();
