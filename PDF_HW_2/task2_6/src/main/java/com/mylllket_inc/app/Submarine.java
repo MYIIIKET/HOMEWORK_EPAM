@@ -1,9 +1,13 @@
 package com.mylllket_inc.app;
 
+@SubmarineExist(name = "Submarine")
+
 public class Submarine {
     private Engine engine;
     private boolean status = false;
 
+
+    @EngineExist(name = "Engine")
     public static class Engine {
         private String enType;
         private int enPower;
