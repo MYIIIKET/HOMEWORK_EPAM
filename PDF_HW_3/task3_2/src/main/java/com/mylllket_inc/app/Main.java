@@ -1,18 +1,15 @@
 package com.mylllket_inc.app;
 
 
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.io.UnsupportedEncodingException;
 
 public class Main {
 
-    public static void main(String[] args) {
-//        Locale en = new Locale("en", "US");
-        Locale ru = new Locale("ru","RU");
-        ResourceBundle rb1 = ResourceBundle.getBundle("com.mylllket_inc.app.Questions_ru_RU", ru);
-
-
-//        System.out.println(rb1.getString("question_1"));
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        Question q = new Question("en_US");
+        System.out.println(q.getQuestions());
+        q.setLocale("ru_RU");
+        System.out.println(q.getAnswer(5));
     }
 
 }
