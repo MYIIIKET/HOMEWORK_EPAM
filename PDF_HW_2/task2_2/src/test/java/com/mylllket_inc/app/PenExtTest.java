@@ -21,9 +21,9 @@ public class PenExtTest extends TestCase {
         assertFalse(a.equals(b));
         assertFalse(b.equals(a));
 
-        Pen c = new PenExt();
+        Pen c = new Pen();
         a.setPrice(10);
-        assertTrue(a.equals(c));
+        assertFalse(a.equals(c));
     }
 
     public void testToString() throws Exception {

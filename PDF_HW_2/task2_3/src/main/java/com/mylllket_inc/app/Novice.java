@@ -33,18 +33,7 @@ public class Novice extends Person {
     protected Novice(Builder builder) {
 
         for (int i = 0; i < stack.list.length; i++) {
-            if (stack.list[i] instanceof ballpointPen)
-                this.add(stack.list[i]);
-            if (stack.list[i] instanceof gelPen)
-                this.add(stack.list[i]);
-            if (stack.list[i] instanceof markerPen)
-                this.add(stack.list[i]);
-            if (stack.list[i] instanceof biopolymericPen)
-                this.add(stack.list[i]);
-            if (stack.list[i] instanceof capillaryPen)
-                this.add(stack.list[i]);
-            if (stack.list[i] instanceof fountainPen)
-                this.add(stack.list[i]);
+            this.add(stack.list[i]);
         }
 
     }
