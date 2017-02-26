@@ -16,43 +16,10 @@ public class Novice extends Person {
         }
 
         public Builder addPen(PenExt pen) {
-            if(pen instanceof PenExt){
+            if (pen instanceof PenExt) {
                 stack.add(pen);
                 return this;
             }
-//            if (pen instanceof ballpointPen) {
-//                stack.add(pen);
-//                return this;
-//            }
-//
-//
-//            if (pen instanceof gelPen) {
-//                stack.add(pen);
-//                return this;
-//            }
-//
-//
-//            if (pen instanceof markerPen) {
-//                stack.add(pen);
-//                return this;
-//            }
-//
-//            if (pen instanceof capillaryPen) {
-//                stack.add(pen);
-//                return this;
-//            }
-//
-//
-//            if (pen instanceof biopolymericPen) {
-//                stack.add(pen);
-//                return this;
-//            }
-//
-//
-//            if (pen instanceof fountainPen) {
-//                stack.add(pen);
-//                return this;
-//            }
 
             return null;
         }
