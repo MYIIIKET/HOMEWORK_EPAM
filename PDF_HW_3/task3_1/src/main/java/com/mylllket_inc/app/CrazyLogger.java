@@ -23,7 +23,19 @@ public class CrazyLogger {
         StringBuilder toReturn = new StringBuilder();
         String[] result = log.toString().split("\\n");
         for (int i = 0; i < result.length; i++) {
-            if (log.substring(0, 16).equals(toSearch))
+            if (result[i].substring(0, 16).equals(toSearch))
+                toReturn.append(result[i] + "\n");
+        }
+        if (toReturn.toString().equals(""))
+            return toReturn.append("Nothing").toString();
+        return toReturn.toString();
+    }
+
+    public String searchByMessage(String toSearch) {
+        StringBuilder toReturn = new StringBuilder();
+        String[] result = log.toString().split("\\n");
+        for (int i = 0; i < result.length; i++) {
+            if (result[i].substring(19, result[i].length()).equals(toSearch))
                 toReturn.append(result[i] + "\n");
         }
         if (toReturn.toString().equals(""))
@@ -43,6 +55,5 @@ public class CrazyLogger {
             System.out.println("Wrong date format!");
             return false;
         }
-
     }
 }
