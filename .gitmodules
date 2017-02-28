@@ -22,3 +22,9 @@
 [submodule "PDF_HW_1/task1_6"]
 	path = PDF_HW_1/task1_6
 	url = https://github.com/MYIIIKET/task1_6
+[submodule "PDF_HW_1/task1"]
+	path = PDF_HW_1/task1
+	url = https://github.com/MYIIIKET/task1
+[submodule "PDF_HW_1/task2"]
+	path = PDF_HW_1/task2
+	url = https://github.com/MYIIIKET/task2
