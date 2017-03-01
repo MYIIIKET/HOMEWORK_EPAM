@@ -41,4 +41,26 @@ public class FileIOStream {
         }
         return false;
     }
+
+    public String[] getSentencesWithPics(String text) {
+        StringBuilder result = new StringBuilder();
+        Pattern patternSentence = Pattern.compile("[А-ЯA-Z].*[.!?]");
+        Pattern patternPic = Pattern.compile("\\(Рис\\. \\d\\)?");
+        Matcher matcherPic;
+
+        Matcher matcherSentence = patternSentence.matcher(text);
+
+        while (matcherSentence.find() != false) {
+            matcherPic = patternPic.matcher(matcherSentence.group());
+            if (matcherPic.find())
+                result.append("Sentence: " + matcherSentence.group() + "\n");
+        }
+        return result.toString().split("\n");
+    }
+
+    public void printSentences(String[] text) {
+        for (int i = 0; i < text.length; i++) {
+            System.out.println(text[i]);
+        }
+    }
 }
