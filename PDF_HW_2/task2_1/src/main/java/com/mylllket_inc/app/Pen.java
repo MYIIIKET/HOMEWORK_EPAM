@@ -28,5 +28,9 @@ public class Pen {
         return result.toString();
     }
 
+    public int getId(){
+        return this.id;
+    }
+
 
 }
