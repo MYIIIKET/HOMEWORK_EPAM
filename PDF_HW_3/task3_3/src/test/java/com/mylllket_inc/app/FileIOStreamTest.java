@@ -10,5 +10,8 @@ public class FileIOStreamTest extends TestCase {
     public void testRead() throws Exception {
 
         FileIOStream file = new FileIOStream("./src/main/java/com/mylllket_inc/app/file.html");
-        }
+        String text = file.read();
+        
+        System.out.println(file.checkOnPicSequence(text));
     }
+}

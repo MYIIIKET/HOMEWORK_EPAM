@@ -1,6 +1,8 @@
 package com.mylllket_inc.app;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FileIOStream {
     private FileInputStream inputStream;
@@ -25,5 +27,18 @@ public class FileIOStream {
         }
         inputStream.close();
         return result.toString();
+    }
+
+    public boolean checkOnPicSequence(String text) {
+        Pattern pattern = Pattern.compile("\\(Рис\\. \\d\\)[\\S\\s]*?\\(Рис\\. \\d\\)");
+        Matcher matcher = pattern.matcher(text);
+
+        matcher.find();
+        while (matcher.find() != false) {
+            if (matcher.group().charAt(6) == matcher.group().charAt(matcher.group().length() - 2)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
