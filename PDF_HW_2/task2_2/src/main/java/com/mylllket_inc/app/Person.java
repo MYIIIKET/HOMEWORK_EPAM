@@ -26,7 +26,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     public void setStationery(T[] data) {
         size = data.length;
-        this.list = data;
+        this.list = (PenExt[]) data;
     }
 
     public void add(T data) {

@@ -4,40 +4,55 @@ import junit.framework.TestCase;
 
 public class PersonTest extends TestCase {
 
-    public void testThatPersonCanStorePens() throws Exception{
+    public void testThatPersonCanStorePens() throws Exception {
         Person a = new Person();
         PenExt p1 = new PenExt();
         PenExt p2 = new PenExt();
-
         a.add(p1);
         a.add(p2);
+        assertTrue(a.contains(p1));
+        assertTrue(a.contains(p2));
     }
 
-    public void testAdd() throws Exception {
+    public void testThatPersonCantHaveTwoSamePens() {
         Person a = new Person();
-        Person b = new Person();
-
-        Pen p1 = new Pen();
-        PenExt p2 = new PenExt();
-        p2.setPrice(15);
-        Pen p3 = new PenExt();
-
-        Pen[] p4 = new Pen[3];
-        Pen[] p5 = new PenExt[3];
-        PenExt[] p6 = new PenExt[3];
-
-        for (int i = 0; i < 3; i++) {
-            p4[i] = new Pen();
-            p5[i] = new PenExt();
-            p6[i] = new PenExt();
-        }
-        a.setStationery(p6);
-        a.add(p2);
-        b.add(p2);
-        b.addStationery(p6);
-        System.out.println(a.toString());
-        System.out.println(b.toString());
-
+        PenExt p1 = new PenExt();
+        a.add(p1);
+        a.add(p1);
+        assertTrue(a.getList().length == 1);
     }
 
+    public void testThatStationaryCanBeAddedToPerson() {
+        Person a = new Person();
+
+        PenExt[] p = new PenExt[3];
+        for (int i = 0; i < p.length; i++) {
+            p[i] = new PenExt();
+        }
+        a.addStationery(p);
+
+        for (int i = 0; i < p.length; i++) {
+            assertTrue(a.contains(p[i]));
+        }
+    }
+
+    public void testThatNewStationaryCanBeSetToPerson() {
+        Person a = new Person();
+        PenExt p1 = new PenExt();
+        a.add(p1);
+        assertTrue(a.contains(p1));
+        assertTrue(a.getList().length == 1);
+
+        PenExt[] p = new PenExt[3];
+        for (int i = 0; i < p.length; i++) {
+            p[i] = new PenExt();
+        }
+        a.setStationery(p);
+
+        for (int i = 0; i < p.length; i++) {
+            assertTrue(a.contains(p[i]));
+        }
+        assertFalse(a.contains(p1));
+        assertTrue(a.getList().length == 3);
+    }
 }
