@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 
 public class JavaParser {
     private String path;
-    private File file;
-    private FileInputStream fis = null;
+
     private String data = null;
     private String template;
 
@@ -18,17 +17,18 @@ public class JavaParser {
 
 
     public JavaParser(String path) throws FileNotFoundException {
-        this.file = new File(path);
-        this.fis = new FileInputStream(file);
         this.path = path;
     }
 
     public String read() throws IOException {
         int content;
+        File file = new File(this.path);
+        FileInputStream fis = new FileInputStream(file);
         StringBuilder result = new StringBuilder();
         while ((content = fis.read()) != -1) {
             result.append((char) content);
         }
+        fis.close();
         return data = result.toString();
     }
 
