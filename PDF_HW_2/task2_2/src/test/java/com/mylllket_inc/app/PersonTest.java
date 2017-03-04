@@ -4,6 +4,14 @@ import junit.framework.TestCase;
 
 public class PersonTest extends TestCase {
 
+    public void testThatPersonCanStorePens() throws Exception{
+        Person a = new Person();
+        PenExt p1 = new PenExt();
+        PenExt p2 = new PenExt();
+        a.add(p1);
+        a.add(p2);
+    }
+
     public void testAdd() throws Exception {
         Person a = new Person();
         Person b = new Person();
