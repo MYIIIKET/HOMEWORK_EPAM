@@ -4,55 +4,41 @@ import junit.framework.TestCase;
 
 public class PenExtTest extends TestCase {
 
-    public void testHashCode() throws Exception {
-        PenExt a = new PenExt();
-        PenExt b = new PenExt();
-        System.out.println(a.hashCode());
-        System.out.println(b.hashCode());
+    public void testThatPenHasDefaultPrice() {
+        PenExt p = new PenExt();
+        assertTrue(p.getPrice() == 10);
     }
 
-    public void testEquals() throws Exception {
-        PenExt a = new PenExt();
-        PenExt b = new PenExt();
-        assertTrue(a.equals(a));
-        assertTrue(a.equals(b));
-
-        a.setPrice(15);
-        assertFalse(a.equals(b));
-        assertFalse(b.equals(a));
-
-        Pen c = new Pen();
-        a.setPrice(10);
-        assertFalse(a.equals(c));
+    public void testThatPriceCanBeSetToPen() {
+        PenExt p = new PenExt();
+        p.setPrice(15);
+        assertTrue(p.getPrice() == 15);
     }
 
-    public void testToString() throws Exception {
-        PenExt a = new PenExt();
-        PenExt b = a;
-
-        System.out.println(a.toString());
-        System.out.println(b.toString());
-
-        b = new PenExt();
-        b.setPrice(15);
-        System.out.println(b.toString());
-
-        Pen c = new Pen();
-        System.out.println(c.toString());
+    public void testThatPenExtEqualsPenExt() {
+        PenExt p1 = new PenExt();
+        PenExt p2 = p1;
+        assertTrue(p1.equals(p2));
+        assertTrue(p2.equals(p1));
     }
 
-    public void testPrice() throws Exception {
-        PenExt a = new PenExt();
-        int def = 10;
-
-        a.setPrice(5);
-        assertEquals(a.getPrice(), 5);
-
-        a.setPrice(11);
-        assertEquals(a.getPrice(), 11);
-
-        PenExt b = new PenExt();
-        assertEquals(b.getPrice(), def);
+    public void testThatPenExtNotEqualsPenExt() {
+        PenExt p1 = new PenExt();
+        PenExt p2 = new PenExt();
+        assertFalse(p1.equals(p2));
+        assertFalse(p2.equals(p1));
     }
 
+    public void testThatPenExtNotEqualsOtherObjects() {
+        PenExt p = new PenExt();
+        Object o = new Object();
+        assertFalse(p.equals(o));
+        assertFalse(o.equals(p));
+    }
+
+    public void testThatPexExtNotEqualsNull() {
+        PenExt p = new PenExt();
+        assertFalse(p.equals(null));
+    }
+    
 }
