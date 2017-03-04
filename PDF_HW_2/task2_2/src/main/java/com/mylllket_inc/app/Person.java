@@ -1,10 +1,10 @@
 package com.mylllket_inc.app;
 
-public class Person implements Stationery {
+public class Person<T extends PenExt> implements Stationery<T> {
     private static int id_global = 0;
     private int id;
     private int size = 0;
-    protected PenExt[] list;
+    private PenExt[] list;
 
     public Person() {
         id_global++;
@@ -24,12 +24,12 @@ public class Person implements Stationery {
     }
 
 
-    public void setStationery(PenExt[] data) {
+    public void setStationery(T[] data) {
         size = data.length;
         this.list = data;
     }
 
-    public void add(PenExt data) {
+    public void add(T data) {
         if (this.list != null) {
             for (int i = 0; i < list.length; i++) {
                 if (list[i].equals(data))
@@ -47,10 +47,22 @@ public class Person implements Stationery {
         }
     }
 
-    public void addStationery(PenExt[] data) {
+    public void addStationery(T[] data) {
         for (int i = 0; i < data.length; i++) {
             this.add(data[i]);
         }
+    }
+
+    public boolean contains(T data) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i].equals(data))
+                return true;
+        }
+        return false;
+    }
+
+    public PenExt[] getList() {
+        return list;
     }
 
 }

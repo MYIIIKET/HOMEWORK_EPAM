@@ -8,6 +8,7 @@ public class PersonTest extends TestCase {
         Person a = new Person();
         PenExt p1 = new PenExt();
         PenExt p2 = new PenExt();
+
         a.add(p1);
         a.add(p2);
     }
