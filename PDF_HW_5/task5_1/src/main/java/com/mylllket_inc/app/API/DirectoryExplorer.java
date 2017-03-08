@@ -1,12 +1,16 @@
-package com.mylllket_inc.app;
+package com.mylllket_inc.app.API;
 
+
+import com.mylllket_inc.app.Exceptions.NoSuchDirectoryException;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class DirectoryExplorer extends Throwable {
+    public static final String fileType = "type";
     private static String currentDirectory = System.getProperty("user.dir");
 
     public static String getCurrentDirectory() {
@@ -36,7 +40,13 @@ public class DirectoryExplorer extends Throwable {
         if (!Files.exists(directory) || !Files.isDirectory(directory)) {
             throw new NoSuchDirectoryException(directory.toString());
         } else currentDirectory = directory.toString();
+        System.setProperty("user.dir", currentDirectory);
         return true;
+    }
+
+    public static void createFile(String fileName) throws IOException {
+        File file = new File(DirectoryExplorer.getCurrentDirectory() + "/" + fileName + "." + DirectoryExplorer.fileType);
+        file.createNewFile();
     }
 
     private static Path setPath(String path) {
