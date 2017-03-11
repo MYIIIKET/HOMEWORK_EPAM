@@ -25,7 +25,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
     private static int id_global = 0;
     private int id;
     private int size = 0;
-    protected PenExt[] list;
+    private PenExt[] list;
 
     /**
      * Constructor creates {@link Person} object
