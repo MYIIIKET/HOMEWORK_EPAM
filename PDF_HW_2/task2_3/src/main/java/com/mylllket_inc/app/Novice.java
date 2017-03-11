@@ -4,11 +4,8 @@ public class Novice<T extends PenExt> extends Person {
 
 
     protected static Person stack = new Person();
-    private PenExt[] list;
-
 
     public static class Builder {
-
 
         public Builder(ballpointPen p1, gelPen p2, markerPen p3) {
             addPen(p1);
@@ -32,7 +29,7 @@ public class Novice<T extends PenExt> extends Person {
     }
 
     protected Novice(Builder builder) {
-        this.list = stack.getList();
+        this.list = stack.list;
         for (int i = 0; i < list.length; i++) {
             this.add(list[i]);
         }
