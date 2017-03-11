@@ -3,7 +3,7 @@ package com.mylllket_inc.app;
 public class Novice<T extends PenExt> extends Person {
 
 
-    protected static Person stack = new Person();
+    private static Person stack = new Person();
 
     public static class Builder {
 
@@ -29,9 +29,8 @@ public class Novice<T extends PenExt> extends Person {
     }
 
     protected Novice(Builder builder) {
-        this.list = stack.list;
-        for (int i = 0; i < list.length; i++) {
-            this.add(list[i]);
+        for (int i = 0; i < stack.getList().length; i++) {
+            this.add(stack.getList()[i]);
         }
 
     }
