@@ -8,6 +8,7 @@ public class NoviceExtTest extends TestCase {
         gelPen p2 = new gelPen();
         p2.setPrice(2);
         markerPen p3 = new markerPen();
+        Novice a1 = new Novice.Builder(p1, p2, p3).addPen(new capillaryPen()).build();
         NoviceExt a = new NoviceExt(new Novice.Builder(p1, p2, p3).addPen(new capillaryPen()));
         System.out.println(a.toString());
 
