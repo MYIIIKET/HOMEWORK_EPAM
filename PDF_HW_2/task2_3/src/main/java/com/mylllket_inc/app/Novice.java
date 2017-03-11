@@ -28,7 +28,7 @@ public class Novice<T extends PenExt> extends Person {
         }
     }
 
-    private Novice(Builder builder) {
+    public Novice(Builder builder) {
         for (int i = 0; i < stack.getList().length; i++) {
             this.add(stack.getList()[i]);
         }
