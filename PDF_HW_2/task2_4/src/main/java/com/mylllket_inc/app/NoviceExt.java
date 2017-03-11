@@ -2,11 +2,10 @@ package com.mylllket_inc.app;
 
 public class NoviceExt extends Novice implements Sortable {
 
-    protected NoviceExt(Builder builder) {
+
+    private NoviceExt(Builder builder) {
         super(builder);
     }
-
-
 
     public NoviceExt sortByName() {
         this.list = BubbleSort(stack.list, 1);
