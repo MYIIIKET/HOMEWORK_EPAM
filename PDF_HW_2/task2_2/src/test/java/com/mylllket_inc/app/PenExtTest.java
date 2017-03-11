@@ -40,5 +40,5 @@ public class PenExtTest extends TestCase {
         PenExt p = new PenExt();
         assertFalse(p.equals(null));
     }
-    
+
 }

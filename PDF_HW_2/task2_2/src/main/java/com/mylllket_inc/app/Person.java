@@ -25,7 +25,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
     private static int id_global = 0;
     private int id;
     private int size = 0;
-    private PenExt[] list;
+    protected PenExt[] list;
 
     /**
      * Constructor creates {@link Person} object
@@ -39,6 +39,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Returns information about current {@link Person} object as {@link String}
+     *
      * @return {@link String} object
      */
     public String toString() {
@@ -56,6 +57,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Set new {@link PenExt} objects to current {@link Person}
+     *
      * @param data array of {@link PenExt} objects
      */
     public void setStationery(T[] data) {
@@ -65,6 +67,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Add new {@link PenExt} object to {@link Person}
+     *
      * @param data object of {@link PenExt}
      */
     public void add(T data) {
@@ -87,6 +90,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Add array of {@link PenExt} objects to current {@link Person}
+     *
      * @param data array of {@link PenExt} objects
      */
     public void addStationery(T[] data) {
@@ -97,6 +101,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Check if {@link Person} contains {@link PenExt} object
+     *
      * @param data object of {@link PenExt}
      * @return true if {@link Person} has given {@link PenExt} object else false
      */
@@ -110,10 +115,11 @@ public class Person<T extends PenExt> implements Stationery<T> {
 
     /**
      * Returns array of {@link PenExt} objects
+     *
      * @return array of {@link PenExt} objects
      */
     public PenExt[] getList() {
-        return list;
+        return this.list;
     }
 
 }
