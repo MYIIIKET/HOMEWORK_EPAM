@@ -1,24 +1,26 @@
 package com.mylllket_inc.app;
 
-public class NoviceExt extends Novice implements Sortable {
+public class NoviceExt extends Novice {
+    private PenExt[] list;
 
-
-    private NoviceExt(Builder builder) {
+    NoviceExt(Builder builder) {
         super(builder);
+        this.list = this.getList();
     }
 
+
     public NoviceExt sortByName() {
-        this.list = BubbleSort(stack.list, 1);
+        this.list = BubbleSort(this.list, 1);
         return this;
     }
 
     public NoviceExt sortByPrice() {
-        this.list = BubbleSort(stack.list, 2);
+        this.list = BubbleSort(this.list, 2);
         return this;
     }
 
     public NoviceExt sort() {
-        this.list = BubbleSort(stack.list, 3);
+        this.list = BubbleSort(this.list, 3);
         return this;
     }
 

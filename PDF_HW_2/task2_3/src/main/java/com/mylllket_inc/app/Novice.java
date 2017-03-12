@@ -2,10 +2,8 @@ package com.mylllket_inc.app;
 
 public class Novice<T extends PenExt> extends Person {
 
-
-    private static Person stack = new Person();
-
     public static class Builder {
+        private Person list = new Person();
 
         public Builder(ballpointPen p1, gelPen p2, markerPen p3) {
             addPen(p1);
@@ -15,13 +13,11 @@ public class Novice<T extends PenExt> extends Person {
 
         public Builder addPen(PenExt pen) {
             if (pen instanceof PenExt) {
-                stack.add(pen);
+                list.add(pen);
                 return this;
             }
-
             return null;
         }
-
 
         public Novice build() {
             return new Novice(this);
@@ -29,8 +25,8 @@ public class Novice<T extends PenExt> extends Person {
     }
 
     public Novice(Builder builder) {
-        for (int i = 0; i < stack.getList().length; i++) {
-            this.add(stack.getList()[i]);
+        for (int i = 0; i < builder.list.getList().length; i++) {
+            this.add(builder.list.getList()[i]);
         }
     }
 

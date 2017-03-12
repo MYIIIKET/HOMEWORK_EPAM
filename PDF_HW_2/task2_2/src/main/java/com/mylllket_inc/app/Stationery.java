@@ -5,4 +5,5 @@ public interface Stationery<T extends Pen> {
     public void setStationery(T[] data);
     public void add(T data);
     public void addStationery(T[] data);
+    public PenExt[] getList();
 }

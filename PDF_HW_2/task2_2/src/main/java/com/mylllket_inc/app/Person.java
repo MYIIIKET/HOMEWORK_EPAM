@@ -118,6 +118,7 @@ public class Person<T extends PenExt> implements Stationery<T> {
      *
      * @return array of {@link PenExt} objects
      */
+    @Override
     public PenExt[] getList() {
         return this.list;
     }
