@@ -26,6 +26,7 @@ public class TransactionReader {
 
 
         for (int i = 0; i < lines.length; i++) {
+//            System.out.println(Thread.currentThread().getName() + "|||" + i);
             synchronized (TransactionReader.class) {
                 stringTransaction = lines[i].split(" ");
                 transactions[i] = new Transaction();
