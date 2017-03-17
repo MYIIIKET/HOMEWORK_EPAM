@@ -44,9 +44,11 @@ public class IntegerSetterGetter extends Thread {
             number = resource.getELement();
             while (number == null) {
                 System.out.println("Поток " + getName() + " ждет пока очередь заполнится.");
+				//added that threads won`t wait all the time
                 resource.wait(500);
                 System.out.println("Поток " + getName() + " возобновил работу.");
                 number = resource.getELement();
+				//in case when there is no elements
                 if (number == null)
                     setIntegersIntoResource();
             }
