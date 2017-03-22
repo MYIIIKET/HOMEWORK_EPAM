@@ -32,13 +32,13 @@
 	</tr>
 	<tr>
 		<td>HashSet</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>No</td>
+		<td>No</td>
+		<td>No</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>LinkedHashSet</td>
