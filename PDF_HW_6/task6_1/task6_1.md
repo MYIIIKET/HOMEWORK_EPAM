@@ -90,24 +90,4 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
-		<td>LinkedHashMap</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>IdentityHashMap</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
 </table>
