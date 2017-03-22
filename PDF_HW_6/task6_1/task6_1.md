@@ -42,13 +42,13 @@
 	</tr>
 	<tr>
 		<td>LinkedHashSet</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>No</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>TreeSet</td>
