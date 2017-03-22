@@ -18,17 +18,17 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes?</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>ArrayList</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>Yes</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>HashSet</td>
