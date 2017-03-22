@@ -1,4 +1,4 @@
-<h1 align = "center">Задание 1. Классы коллекций</h1>
+<h1 align = "center">Task 1. Collection classes</h1>
 <table border="1">
 	<tr>
 		<td>Class name</td>
