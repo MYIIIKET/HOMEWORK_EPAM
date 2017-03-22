@@ -72,13 +72,13 @@
 	</tr>
 	<tr>
 		<td>TreeMap</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>WeakHashMap</td>
