@@ -1,16 +1,16 @@
 <h1 align = "center">Task 1. Collection classes</h1>
 <table border="1">
-	<tr>
-		<td>Class name</td>
-		<td>Ordering</td>
-		<td>Random access</td>
-		<td>Key-Value pairs</td>
-		<td>Allows duplicates</td>
-		<td>Allows null values</td>
-		<td>Thread safe</td>
-		<td>Blocking operations</td>
+	<tr align="center">
+		<td><b>Class name</b></td>
+		<td><b>Ordering</b></td>
+		<td><b>Random access</b></td>
+		<td><b>Key-Value pairs</b></td>
+		<td><b>Allows duplicates</b></td>
+		<td><b>Allows null values</b></td>
+		<td><b>Thread safe</b></td>
+		<td><b>Blocking operations</b></td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>LinkedList</td>
 		<td>Yes</td>
 		<td>No</td>
@@ -20,7 +20,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>ArrayList</td>
 		<td>Yes</td>
 		<td>Yes</td>
@@ -30,7 +30,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>HashSet</td>
 		<td>No</td>
 		<td>No</td>
@@ -40,7 +40,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>LinkedHashSet</td>
 		<td>Yes</td>
 		<td>No</td>
@@ -50,7 +50,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>TreeSet</td>
 		<td>Yes</td>
 		<td>No</td>
@@ -60,7 +60,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>HashMap</td>
 		<td>No</td>
 		<td>Yes</td>
@@ -70,7 +70,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>TreeMap</td>
 		<td>Yes</td>
 		<td>No</td>
@@ -80,7 +80,7 @@
 		<td>No</td>
 		<td>Yes</td>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td>WeakHashMap</td>
 		<td>No</td>
 		<td>Yes</td>
