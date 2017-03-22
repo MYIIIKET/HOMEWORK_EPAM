@@ -62,13 +62,13 @@
 	</tr>
 	<tr>
 		<td>HashMap</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
 	</tr>
 	<tr>
 		<td>TreeMap</td>
