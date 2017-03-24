@@ -56,4 +56,14 @@ class HeadDoctor extends Doctor{}
 			Watch "Doctor doctor2 = new MedicalStaff();"
 		</td>
 	</tr>
+	<tr>
+		<td>Doctor doctor6 = new Nurse();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			The same reason as in previous one.<br>
+			We could do: Nurse doctor6 = new Doctor();<br>
+			But it won`t work because these classes are not connected.
+		</td>
+	</tr>
 </table>
