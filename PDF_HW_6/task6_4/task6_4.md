@@ -369,4 +369,72 @@
          The user can access elements by their integer index (position in the list), and search for elements in the list.
       </td>
    </tr>
+   <tr>
+   <td>
+      Queqe
+   </td>
+   <td>
+      <table border = "1">
+         <tr>
+            <th class="colFirst" scope="col">Modifier and Type</th>
+            <th class="colLast" scope="col">Method and Description</th>
+         </tr>
+         <tr class="altColor">
+            <td class="colFirst"><code>boolean</code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#add(E)">add</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
+               <div class="block">Inserts the specified element into this queue if it is possible to do so
+                  immediately without violating capacity restrictions, returning
+                  <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
+                  if no space is currently available.
+               </div>
+            </td>
+         </tr>
+         <tr class="rowColor">
+            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#element()">element</a></strong>()</code>
+               <div class="block">Retrieves, but does not remove, the head of this queue.</div>
+            </td>
+         </tr>
+         <tr class="altColor">
+            <td class="colFirst"><code>boolean</code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#offer(E)">offer</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
+               <div class="block">Inserts the specified element into this queue if it is possible to do
+                  so immediately without violating capacity restrictions.
+               </div>
+            </td>
+         </tr>
+         <tr class="rowColor">
+            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#peek()">peek</a></strong>()</code>
+               <div class="block">Retrieves, but does not remove, the head of this queue,
+                  or returns <tt>null</tt> if this queue is empty.
+               </div>
+            </td>
+         </tr>
+         <tr class="altColor">
+            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#poll()">poll</a></strong>()</code>
+               <div class="block">Retrieves and removes the head of this queue,
+                  or returns <tt>null</tt> if this queue is empty.
+               </div>
+            </td>
+         </tr>
+         <tr class="rowColor">
+            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+            <td class="colLast">
+               <code><strong><a href="../../java/util/Queue.html#remove()">remove</a></strong>()</code>
+               <div class="block">Retrieves and removes the head of this queue.</div>
+            </td>
+         </tr>
+      </table>
+   </td>
+   <td>
+      A collection designed for holding elements prior to processing.
+   </td>
+</tr>
 </table>
