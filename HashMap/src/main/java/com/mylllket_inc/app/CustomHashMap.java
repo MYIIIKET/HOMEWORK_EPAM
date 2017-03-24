@@ -55,8 +55,31 @@ public class CustomHashMap<K, V> implements Map<K, V> {
         return null;
     }
 
-//    public V[] getEntry(K key) {
-//    }
+    public V[] getEntry(K key) {
+        int index = getHash((K) key);
+        if(bucket[index]!=null){
+            if(bucket[index].getKey().equals(key)){
+                int size=getEntrySize(bucket[index]);
+                Object[] values = new Object[size];
+                CustomEntry tmpBucket = bucket[index];
+                for (int i = 0; i <size ; i++) {
+                    values[i]=tmpBucket.getValue();
+                    tmpBucket=tmpBucket.next();
+                }
+                return (V[])values;
+            }
+        }
+        return null;
+    }
+
+    private int getEntrySize(CustomEntry entry){
+        int size=0;
+        while (entry!=null){
+            entry=entry.next();
+            size++;
+        }
+        return size;
+    }
 
     public V put(K key, V value) {
         int index = getHash(key);

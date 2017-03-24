@@ -88,4 +88,15 @@ public class CustomHashMapTest extends TestCase {
         assertFalse(a.containsKey("bbb"));
     }
 
+    public void testThatWeCanGetEntryLinkedList(){
+        CustomHashMap a = new CustomHashMap();
+        a.put("aaa", 13);
+        a.put("aaa",15);
+        a.put("aaa",17);
+        a.put("aaa",19);
+        Object[] values = a.getEntry("aaa");
+        assertEquals(values[0],13);
+        assertEquals(values[3],19);
+    }
+
 }
