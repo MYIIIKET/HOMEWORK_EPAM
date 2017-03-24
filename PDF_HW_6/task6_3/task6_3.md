@@ -47,4 +47,13 @@ class HeadDoctor extends Doctor{}
 			HeadDoctor extends Doctor -> Doctor extends MedicalStaff->MedicalStaff extends Object implicitly.
 		</td>
 	</tr>
+	<tr>
+		<td>HeadDoctor doctor5 = new Object();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			Because Object doesn`t know about HeadDoctor class.<br>
+			Watch "Doctor doctor2 = new MedicalStaff();"
+		</td>
+	</tr>
 </table>
