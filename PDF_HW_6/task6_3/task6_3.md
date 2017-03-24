@@ -4,11 +4,6 @@ class Doctor extends MedicalStaff{}
 class Nurse extends MedicalStaff{}
 class HeadDoctor extends Doctor{}
 ```
-<section>
-	<pre><code data-trim>
-	<script src="https://github.com/isagalaev/highlight.js/blob/master/src/highlight.js"></script>
-	</code></pre>
-</section>
 
 <h1>Task 3. References on collections</h1>
 <table border="1">
@@ -18,14 +13,8 @@ class HeadDoctor extends Doctor{}
 		<td><b>Incorrect</b></td>
 	</tr>
 	<tr>
-		<td>
-		<pre>
-		<code class="java">
-		Doctor doctor1 = new Doctor();
-		</code>
-		</pre>
-		</td>
-		<td></td>
+		<td>Doctor doctor1 = new Doctor();</td>
+		<td><input type="checkbox" checked readonly></td>
 		<td></td>
 	</tr>
 </table>
