@@ -14,7 +14,7 @@ class HeadDoctor extends Doctor{}
 	</tr>
 	<tr>
 		<td>Doctor doctor1 = new Doctor();</td>
-		<td><input type="checkbox" checked readonly></td>
-		<td></td>
+		<td>[+]</td>
+		<td>{ }</td>
 	</tr>
 </table>
