@@ -18,14 +18,35 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     }
 
     public boolean isEmpty() {
+        for (int i = 0; i < CAPACITY; i++) {
+            if (bucket[i] != null)
+                return true;
+        }
         return false;
     }
 
     public boolean containsKey(Object key) {
+        for (int i = 0; i < CAPACITY; i++) {
+            if (bucket[i] != null) {
+                if (bucket[i].getKey().equals(key))
+                    return true;
+            }
+        }
         return false;
     }
 
     public boolean containsValue(Object value) {
+        for (int i = 0; i < CAPACITY; i++) {
+            if (bucket[i] != null) {
+                CustomEntry tmpBucket = bucket[i];
+                while (tmpBucket != null) {
+                    if (tmpBucket.getValue().equals(value)) {
+                        return true;
+                    }
+                    tmpBucket = tmpBucket.next();
+                }
+            }
+        }
         return false;
     }
 
@@ -37,12 +58,15 @@ public class CustomHashMap<K, V> implements Map<K, V> {
         int index = getHash(key);
         if (bucket[index] == null) {
             bucket[index] = new CustomEntry<K, V>(key, value);
+            currentSize++;
             return bucket[index].getValue();
         } else {
             if (bucket[index].getValue() != value) {
-                while (bucket[index].next() != null)
-                    bucket[index] = bucket[index].next();
-                bucket[index].setNext(new CustomEntry(key, value));
+                CustomEntry tmpBucket = bucket[index];
+                while (tmpBucket.next() != null) {
+                    tmpBucket = tmpBucket.next();
+                }
+                tmpBucket.setNext(new CustomEntry(key, value));
                 return bucket[index].next().getValue();
             }
         }
