@@ -13,8 +13,8 @@ class HeadDoctor extends Doctor{}
 	</tr>
 	
 	<tr>
-		<td id="operation"></td>
-		<td id="Correct"></td>
-		<td id="Incorrect"></td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 </table>
