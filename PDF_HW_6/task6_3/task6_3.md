@@ -82,4 +82,7 @@ class HeadDoctor extends Doctor{}
 			The same reason as in "Object object1 = new HeadDoctor();"
 		</td>
 	</tr>
+	<tr>
+		<td colspan="3" align = "center">List</td>
+	</tr>
 </table>
