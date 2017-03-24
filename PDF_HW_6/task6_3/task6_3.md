@@ -38,4 +38,13 @@ class HeadDoctor extends Doctor{}
 			HeadDoctor extends Doctor.
 		</td>
 	</tr>
+	<tr>
+		<td>Object object1 = new HeadDoctor();</td>
+		<td>[+]</td>
+		<td>[ ]</td>
+		<td>
+			Everything in java is Object.<br>
+			HeadDoctor extends Doctor -> Doctor extends MedicalStaff->MedicalStaff extends Object implicitly.
+		</td>
+	</tr>
 </table>
