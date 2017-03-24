@@ -87,12 +87,20 @@ class HeadDoctor extends Doctor{}
 	</tr>
 	<tr>
 		<td>List<Doctor> list1= new ArrayList<Doctor>();</td>
-		<td>[ ]</td>
 		<td>[+]</td>
+		<td>[ ]</td>
 		<td>
 			List is Interfece.<br>
 			ArrayList implements List.<br>
 			Parameters are the same.
+		</td>
+	</tr>
+	<tr>
+		<td>List<MedicalStaff> list1= new ArrayList<Doctor>();</td>
+		<td>[ ]</td>
+		<td>[-]</td>
+		<td>
+			Different parameter types.
 		</td>
 	</tr>
 </table>
