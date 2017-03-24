@@ -99,4 +99,34 @@ public class CustomHashMapTest extends TestCase {
         assertEquals(values[3],19);
     }
 
+    public void testThatWeCanRemoveByKey(){
+        CustomHashMap a = new CustomHashMap();
+        a.put("aaa", 13);
+        a.put("aaa",15);
+        a.put("aaa",17);
+        a.put("aaa",19);
+        a.put("bbb", 1);
+        a.put("bbb",2);
+        a.put("bbb",3);
+        a.put("bbb",4);
+        a.put("bbb",5);
+
+        Object[] values = a.getEntry("aaa");
+        assertEquals(values[0],13);
+        assertEquals(values[3],19);
+
+        values = a.getEntry("bbb");
+        assertEquals(values[0],1);
+        assertEquals(values[4],5);
+
+        a.remove("bbb");
+
+        values = a.getEntry("bbb");
+        assertNull(values);
+
+        values = a.getEntry("aaa");
+        assertEquals(values[0],13);
+        assertEquals(values[3],19);
+    }
+
 }
