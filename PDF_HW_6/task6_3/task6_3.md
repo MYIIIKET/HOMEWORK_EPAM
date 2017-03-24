@@ -13,14 +13,12 @@ class HeadDoctor extends Doctor{}
 		<td><b>Incorrect</b></td>
 		<td><b>Explain</b></td>
 	</tr>
-	
 	<tr>
 		<td>Doctor doctor1 = new Doctor();</td>
 		<td>[+]</td>
 		<td>[ ]</td>
 		<td>We can create object of the same class</td>
 	</tr>
-	
 	<tr>
 		<td>Doctor doctor2 = new MedicalStaff();</td>
 		<td>[ ]</td>
