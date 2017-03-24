@@ -86,7 +86,7 @@ class HeadDoctor extends Doctor{}
 		<td colspan="4" align = "center">List</td>
 	</tr>
 	<tr>
-		<td>List"<Doctor>" list1= new ArrayList"<Doctor>"();</td>
+		<td>List&lt;Doctor&gt; list1= new ArrayList&lt;Doctor&gt;();</td>
 		<td>[+]</td>
 		<td>[ ]</td>
 		<td>
