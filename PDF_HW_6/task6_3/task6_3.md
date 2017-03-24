@@ -96,7 +96,7 @@ class HeadDoctor extends Doctor{}
 		</td>
 	</tr>
 	<tr>
-		<td>List<MedicalStaff> list2= new ArrayList<Doctor>();</td>
+		<td>List&lt;MedicalStaff&gt; list2 = new ArrayList&lt;Doctor&gt;();</td>
 		<td>[ ]</td>
 		<td>[+]</td>
 		<td>
@@ -104,7 +104,7 @@ class HeadDoctor extends Doctor{}
 		</td>
 	</tr>
 	<tr>
-		<td>List<Doctor> list3= new ArrayList<MedicalStaff>();</td>
+		<td>List&lt;Doctor&gt; list3 = new ArrayList&lt;MedicalStaff&gt;();</td>
 		<td>[ ]</td>
 		<td>[+]</td>
 		<td>
@@ -112,11 +112,19 @@ class HeadDoctor extends Doctor{}
 		</td>
 	</tr>
 	<tr>
-		<td>List<Object> list4= new ArrayList<Doctor>();</td>
+		<td>List&lt;Object&gt; list4 = new ArrayList&lt;Doctor&gt;();</td>
 		<td>[ ]</td>
 		<td>[+]</td>
 		<td>
 			Different parameter types.
+		</td>
+	</tr>
+	<tr>
+		<td>List&lt;Object&gt; list5 = new ArrayList&lt;Object&gt;();</td>
+		<td>[+]</td>
+		<td>[ ]</td>
+		<td>
+			Parameters are the same;
 		</td>
 	</tr>
 </table>
