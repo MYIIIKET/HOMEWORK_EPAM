@@ -96,9 +96,25 @@ class HeadDoctor extends Doctor{}
 		</td>
 	</tr>
 	<tr>
-		<td>List<MedicalStaff> list1= new ArrayList<Doctor>();</td>
+		<td>List<MedicalStaff> list2= new ArrayList<Doctor>();</td>
 		<td>[ ]</td>
-		<td>[-]</td>
+		<td>[+]</td>
+		<td>
+			Different parameter types.
+		</td>
+	</tr>
+	<tr>
+		<td>List<Doctor> list3= new ArrayList<MedicalStaff>();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			Different parameter types.
+		</td>
+	</tr>
+	<tr>
+		<td>List<Object> list4= new ArrayList<Doctor>();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
 		<td>
 			Different parameter types.
 		</td>
