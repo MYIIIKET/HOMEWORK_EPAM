@@ -1,7 +1,7 @@
 <h1 align = "center">Task 4. Collections using</h1>
 <table align = "center"  border="1">
    <tr align = "center">
-      <td><b>Name</b></td>
+      <td><b>Interface</b></td>
       <td><b>Functionality</b></td>
       <td><b>Examples</b></td>
    </tr>
@@ -370,71 +370,196 @@
       </td>
    </tr>
    <tr>
-   <td>
-      Queqe
-   </td>
-   <td>
-      <table border = "1">
-         <tr>
-            <th class="colFirst" scope="col">Modifier and Type</th>
-            <th class="colLast" scope="col">Method and Description</th>
-         </tr>
-         <tr class="altColor">
-            <td class="colFirst"><code>boolean</code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#add(E)">add</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
-               <div class="block">Inserts the specified element into this queue if it is possible to do so
-                  immediately without violating capacity restrictions, returning
-                  <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
-                  if no space is currently available.
-               </div>
-            </td>
-         </tr>
-         <tr class="rowColor">
-            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#element()">element</a></strong>()</code>
-               <div class="block">Retrieves, but does not remove, the head of this queue.</div>
-            </td>
-         </tr>
-         <tr class="altColor">
-            <td class="colFirst"><code>boolean</code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#offer(E)">offer</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
-               <div class="block">Inserts the specified element into this queue if it is possible to do
-                  so immediately without violating capacity restrictions.
-               </div>
-            </td>
-         </tr>
-         <tr class="rowColor">
-            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#peek()">peek</a></strong>()</code>
-               <div class="block">Retrieves, but does not remove, the head of this queue,
-                  or returns <tt>null</tt> if this queue is empty.
-               </div>
-            </td>
-         </tr>
-         <tr class="altColor">
-            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#poll()">poll</a></strong>()</code>
-               <div class="block">Retrieves and removes the head of this queue,
-                  or returns <tt>null</tt> if this queue is empty.
-               </div>
-            </td>
-         </tr>
-         <tr class="rowColor">
-            <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
-            <td class="colLast">
-               <code><strong><a href="../../java/util/Queue.html#remove()">remove</a></strong>()</code>
-               <div class="block">Retrieves and removes the head of this queue.</div>
-            </td>
-         </tr>
-      </table>
-   </td>
-   <td>
-      A collection designed for holding elements prior to processing.
-   </td>
-</tr>
+      <td>
+         Queqe
+      </td>
+      <td>
+         <table border = "1">
+            <tr>
+               <th class="colFirst" scope="col">Modifier and Type</th>
+               <th class="colLast" scope="col">Method and Description</th>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#add(E)">add</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
+                  <div class="block">Inserts the specified element into this queue if it is possible to do so
+                     immediately without violating capacity restrictions, returning
+                     <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
+                     if no space is currently available.
+                  </div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#element()">element</a></strong>()</code>
+                  <div class="block">Retrieves, but does not remove, the head of this queue.</div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#offer(E)">offer</a></strong>(<a href="../../java/util/Queue.html" title="type parameter in Queue">E</a>&nbsp;e)</code>
+                  <div class="block">Inserts the specified element into this queue if it is possible to do
+                     so immediately without violating capacity restrictions.
+                  </div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#peek()">peek</a></strong>()</code>
+                  <div class="block">Retrieves, but does not remove, the head of this queue,
+                     or returns <tt>null</tt> if this queue is empty.
+                  </div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#poll()">poll</a></strong>()</code>
+                  <div class="block">Retrieves and removes the head of this queue,
+                     or returns <tt>null</tt> if this queue is empty.
+                  </div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Queue.html" title="type parameter in Queue">E</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Queue.html#remove()">remove</a></strong>()</code>
+                  <div class="block">Retrieves and removes the head of this queue.</div>
+               </td>
+            </tr>
+         </table>
+      </td>
+      <td>
+         A collection designed for holding elements prior to processing.
+      </td>
+   </tr>
+   <tr>
+      <td>Map</td>
+      <td>
+         <table border = "1">
+            <tr>
+               <th class="colFirst" scope="col">Modifier and Type</th>
+               <th class="colLast" scope="col">Method and Description</th>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>void</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#clear()">clear</a></strong>()</code>
+                  <div class="block">Removes all of the mappings from this map (optional operation).</div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#containsKey(java.lang.Object)">containsKey</a></strong>(<a href="../../java/lang/Object.html" title="class in java.lang">Object</a>&nbsp;key)</code>
+                  <div class="block">Returns <tt>true</tt> if this map contains a mapping for the specified
+                     key.
+                  </div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#containsValue(java.lang.Object)">containsValue</a></strong>(<a href="../../java/lang/Object.html" title="class in java.lang">Object</a>&nbsp;value)</code>
+                  <div class="block">Returns <tt>true</tt> if this map maps one or more keys to the
+                     specified value.
+                  </div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Set.html" title="interface in java.util">Set</a>&lt;<a href="../../java/util/Map.Entry.html" title="interface in java.util">Map.Entry</a>&lt;<a href="../../java/util/Map.html" title="type parameter in Map">K</a>,<a href="../../java/util/Map.html" title="type parameter in Map">V</a>&gt;&gt;</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#entrySet()">entrySet</a></strong>()</code>
+                  <div class="block">Returns a <a href="../../java/util/Set.html" title="interface in java.util"><code>Set</code></a> view of the mappings contained in this map.</div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#equals(java.lang.Object)">equals</a></strong>(<a href="../../java/lang/Object.html" title="class in java.lang">Object</a>&nbsp;o)</code>
+                  <div class="block">Compares the specified object with this map for equality.</div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Map.html" title="type parameter in Map">V</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#get(java.lang.Object)">get</a></strong>(<a href="../../java/lang/Object.html" title="class in java.lang">Object</a>&nbsp;key)</code>
+                  <div class="block">Returns the value to which the specified key is mapped,
+                     or <code>null</code> if this map contains no mapping for the key.
+                  </div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>int</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#hashCode()">hashCode</a></strong>()</code>
+                  <div class="block">Returns the hash code value for this map.</div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code>boolean</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#isEmpty()">isEmpty</a></strong>()</code>
+                  <div class="block">Returns <tt>true</tt> if this map contains no key-value mappings.</div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code><a href="../../java/util/Set.html" title="interface in java.util">Set</a>&lt;<a href="../../java/util/Map.html" title="type parameter in Map">K</a>&gt;</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#keySet()">keySet</a></strong>()</code>
+                  <div class="block">Returns a <a href="../../java/util/Set.html" title="interface in java.util"><code>Set</code></a> view of the keys contained in this map.</div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Map.html" title="type parameter in Map">V</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#put(K,%20V)">put</a></strong>(<a href="../../java/util/Map.html" title="type parameter in Map">K</a>&nbsp;key,
+                  <a href="../../java/util/Map.html" title="type parameter in Map">V</a>&nbsp;value)</code>
+                  <div class="block">Associates the specified value with the specified key in this map
+                     (optional operation).
+                  </div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>void</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#putAll(java.util.Map)">putAll</a></strong>(<a href="../../java/util/Map.html" title="interface in java.util">Map</a>&lt;? extends <a href="../../java/util/Map.html" title="type parameter in Map">K</a>,? extends <a href="../../java/util/Map.html" title="type parameter in Map">V</a>&gt;&nbsp;m)</code>
+                  <div class="block">Copies all of the mappings from the specified map to this map
+                     (optional operation).
+                  </div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Map.html" title="type parameter in Map">V</a></code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#remove(java.lang.Object)">remove</a></strong>(<a href="../../java/lang/Object.html" title="class in java.lang">Object</a>&nbsp;key)</code>
+                  <div class="block">Removes the mapping for a key from this map if it is present
+                     (optional operation).
+                  </div>
+               </td>
+            </tr>
+            <tr class="altColor">
+               <td class="colFirst"><code>int</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#size()">size</a></strong>()</code>
+                  <div class="block">Returns the number of key-value mappings in this map.</div>
+               </td>
+            </tr>
+            <tr class="rowColor">
+               <td class="colFirst"><code><a href="../../java/util/Collection.html" title="interface in java.util">Collection</a>&lt;<a href="../../java/util/Map.html" title="type parameter in Map">V</a>&gt;</code></td>
+               <td class="colLast">
+                  <code><strong><a href="../../java/util/Map.html#values()">values</a></strong>()</code>
+                  <div class="block">Returns a <a href="../../java/util/Collection.html" title="interface in java.util"><code>Collection</code></a> view of the values contained in this map.</div>
+               </td>
+            </tr>
+         </table>
+      </td>
+      <td>An object that maps keys to values.<br>
+         A map cannot contain duplicate keys; each key can map to at most one value.
+      </td>
+   </tr>
 </table>
