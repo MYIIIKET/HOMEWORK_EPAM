@@ -5,7 +5,7 @@ class Nurse extends MedicalStaff{}
 class HeadDoctor extends Doctor{}
 ```
 
-<h1>Task 3. References on collections</h1>
+<h1 align = "center">Task 3. References on collections</h1>
 <table border="1">
 	<tr align = "center">
 		<td><b>Operation</b></td>
@@ -13,10 +13,22 @@ class HeadDoctor extends Doctor{}
 		<td><b>Incorrect</b></td>
 		<td><b>Explain</b></td>
 	</tr>
+	
 	<tr>
 		<td>Doctor doctor1 = new Doctor();</td>
 		<td>[+]</td>
 		<td>[ ]</td>
 		<td>We can create object of the same class</td>
+	</tr>
+	
+	<tr>
+		<td>Doctor doctor2 = new MedicalStaff();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			Incompatible types.<br>
+			Class Doctor doesn`t know about MedicalStaff class.<br>
+			Instead we should write: MedicalStaff doctor2 = new Doctor();
+		</td>
 	</tr>
 </table>
