@@ -4,8 +4,11 @@ class Doctor extends MedicalStaff{}
 class Nurse extends MedicalStaff{}
 class HeadDoctor extends Doctor{}
 ```
-
-<script src="https://github.com/isagalaev/highlight.js/blob/master/src/highlight.js"></script>
+<section>
+	<pre><code data-trim>
+	<script src="https://github.com/isagalaev/highlight.js/blob/master/src/highlight.js"></script>
+	</code></pre>
+</section>
 
 <h1>Task 3. References on collections</h1>
 <table border="1">
