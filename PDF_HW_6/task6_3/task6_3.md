@@ -63,7 +63,23 @@ class HeadDoctor extends Doctor{}
 		<td>
 			The same reason as in previous one.<br>
 			We could do: Nurse doctor6 = new Doctor();<br>
-			But it won`t work because these classes are not connected.
+			But it won`t work niether because these classes are not connected.
+		</td>
+	</tr>
+	<tr>
+		<td>Nurse nurse = new Doctor();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			The same reason as in previous one.<br>
+		</td>
+	</tr>
+	<tr>
+		<td>Object object2 = new Nurse();</td>
+		<td>[ ]</td>
+		<td>[+]</td>
+		<td>
+			The same reason as in "Object object1 = new HeadDoctor();"
 		</td>
 	</tr>
 </table>
