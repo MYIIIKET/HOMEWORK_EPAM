@@ -29,4 +29,13 @@ class HeadDoctor extends Doctor{}
 			Instead we should write: MedicalStaff doctor2 = new Doctor();
 		</td>
 	</tr>
+	<tr>
+		<td>Doctor doctor3 = new HeadDoctor();</td>
+		<td>[+]</td>
+		<td>[ ]</td>
+		<td>
+			Same reason as in previous one.<br>
+			HeadDoctor extends Doctor.
+		</td>
+	</tr>
 </table>
