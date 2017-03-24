@@ -26,10 +26,10 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     }
 
     public boolean containsKey(Object key) {
-        for (int i = 0; i < CAPACITY; i++) {
-            if (bucket[i] != null) {
-                if (bucket[i].getKey().equals(key))
-                    return true;
+        int index = getHash((K) key);
+        if(bucket[index]!=null){
+            if(bucket[index].getKey().equals(key)){
+                return true;
             }
         }
         return false;
@@ -50,9 +50,13 @@ public class CustomHashMap<K, V> implements Map<K, V> {
         return false;
     }
 
+    @Override
     public V get(Object key) {
         return null;
     }
+
+//    public V[] getEntry(K key) {
+//    }
 
     public V put(K key, V value) {
         int index = getHash(key);
