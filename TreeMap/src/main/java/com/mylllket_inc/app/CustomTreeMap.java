@@ -81,12 +81,12 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> balance(Node<K, V> node, Node<K, V> parent, Node<K, V> unckle) {
         boolean parentColor = (parent != null) ? parent.getColor() : false;
-        boolean unckleColor = (unckle != null) ? unckle.getColor() : false;
-        if (parentColor && unckleColor) {
+        boolean uncleColor = (unckle != null) ? unckle.getColor() : false;
+        if (parentColor && uncleColor) {
             parent.setColor(false);
             unckle.setColor(false);
-        } else if (parentColor || unckleColor) {
-            
+        } else if (parentColor || uncleColor) {
+            //TODO: Implement rotation when parent and uncle are different
         }
         return null;
     }
