@@ -28,7 +28,7 @@
 		<td>Yes</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>HashSet</td>
@@ -38,7 +38,7 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>LinkedHashSet</td>
@@ -48,7 +48,7 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>TreeSet</td>
@@ -58,7 +58,7 @@
 		<td>No</td>
 		<td>No</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>HashMap</td>
@@ -68,7 +68,7 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>TreeMap</td>
@@ -78,7 +78,7 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 	<tr align="center">
 		<td>WeakHashMap</td>
@@ -88,6 +88,6 @@
 		<td>No</td>
 		<td>Yes</td>
 		<td>No</td>
-		<td>Yes</td>
+		<td>No</td>
 	</tr>
 </table>

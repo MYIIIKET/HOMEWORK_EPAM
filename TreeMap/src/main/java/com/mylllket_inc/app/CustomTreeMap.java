@@ -97,6 +97,11 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         private Node left;
         private Node right;
 
+        private static final int RED = 1;
+        private static final int BLACK = -1;
+
+        private int color;
+
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
@@ -115,6 +120,6 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         public void setValue(V value) {
             this.value = value;
         }
-
     }
+
 }
