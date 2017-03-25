@@ -93,4 +93,19 @@ public class CustomTreeMapTest {
         assertFalse(a.containsKey(3));
     }
 
+    @Test
+    public void testThatWeCanRemoveElementByKey(){
+        CustomTreeMap a = new CustomTreeMap();
+        a.put(5, 1);
+        a.put(4, 4);
+        a.put(7, 5);
+        a.put(2, 3);
+        a.put(3, 11);
+        a.put(8, 4);
+        a.put(6, 6);
+        a.put(1, 2);
+        a.put(9, 4);
+        a.put(10, 6);
+    }
+
 }
