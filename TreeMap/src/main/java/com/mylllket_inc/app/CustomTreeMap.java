@@ -5,17 +5,34 @@ import java.util.*;
 public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> root;
+    private int size = 0;
 
     public int size() {
-        return 0;
+        return size;
     }
 
     public boolean isEmpty() {
-        return false;
+        return root == null;
     }
 
     public boolean containsKey(Object key) {
+        Node tmp = find(root, (K) key);
+        if (tmp != null)
+            return true;
         return false;
+    }
+
+    private Node<K, V> find(Node<K, V> node, K key) {
+        if (node == null) {
+            return null;
+        } else {
+            if (node.getKey().compareTo(key) > 0) {
+                node.left = find(node.left, key);
+            } else if (node.getKey().compareTo(key) < 0) {
+                node.right = find(node.right, key);
+            }
+        }
+        return node;
     }
 
     public boolean containsValue(Object value) {
@@ -34,6 +51,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> put(Node<K, V> node, K key, V value) {
         if (node == null) {
+            size++;
             return new Node<>(key, value);
         } else {
             if (node.getKey().compareTo(key) > 0) {
