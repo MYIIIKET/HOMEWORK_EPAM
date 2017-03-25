@@ -20,9 +20,9 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     public boolean isEmpty() {
         for (int i = 0; i < CAPACITY; i++) {
             if (bucket[i] != null)
-                return true;
+                return false;
         }
-        return false;
+        return true;
     }
 
     public boolean containsKey(Object key) {
