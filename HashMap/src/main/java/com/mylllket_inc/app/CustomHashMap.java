@@ -1,10 +1,7 @@
 package com.mylllket_inc.app;
 
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CustomHashMap<K, V> implements Map<K, V> {
 
@@ -82,6 +79,7 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     }
 
     public V put(K key, V value) {
+        Objects.requireNonNull(key);
         int index = getHash(key);
         if (bucket[index] == null) {
             bucket[index] = new CustomEntry<K, V>(key, value);

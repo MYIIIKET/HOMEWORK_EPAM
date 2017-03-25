@@ -144,4 +144,10 @@ public class CustomHashMapTest {
         assertEquals(values[3], 19);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantPutNullKey(){
+        CustomHashMap a = new CustomHashMap();
+        a.put(null,12);
+    }
+
 }
