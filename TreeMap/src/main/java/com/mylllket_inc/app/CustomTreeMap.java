@@ -7,6 +7,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     private Node<K, V> root;
     private Node<K, V> parent;
     private Node<K, V> unckle;
+    private boolean direction;
     private boolean[] buf = new boolean[3];
     private int size = 0;
 
@@ -64,14 +65,19 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
                 node.left = put(node.left, key, value, node);
 
-                if (node.parent != null)
-                    balance(node.left, node, node.parent.right);
+                if (node.parent != null) {
+                    direction = false;
+                    node = balance(node.left, node, node.parent.right, direction);
+                }
+
             } else if (node.getKey().compareTo(key) < 0) {
 
                 node.right = put(node.right, key, value, node);
 
-                if (node.parent != null)
-                    balance(node.right, node, node.parent.left);
+                if (node.parent != null) {
+                    direction = true;
+                    node = balance(node.right, node, node.parent.right, direction);
+                }
             } else {
                 node.setValue(value);
             }
@@ -79,16 +85,37 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         return node;
     }
 
-    private Node<K, V> balance(Node<K, V> node, Node<K, V> parent, Node<K, V> unckle) {
+    private Node<K, V> balance(Node<K, V> node, Node<K, V> parent, Node<K, V> uncle, boolean direction) {
         boolean parentColor = (parent != null) ? parent.getColor() : false;
-        boolean uncleColor = (unckle != null) ? unckle.getColor() : false;
+        boolean uncleColor = (uncle != null) ? uncle.getColor() : false;
         if (parentColor && uncleColor) {
             parent.setColor(false);
-            unckle.setColor(false);
-        } else if (parentColor || uncleColor) {
+            uncle.setColor(false);
+        } else {
+            if (parentColor == true && uncleColor == false) {
+                if (direction) {
+                    node.parent.parent.left = node.right;
+                    node.right = node.parent.parent;
+                    node.parent.right = node.left;
+                    node.left = node.parent;
+                    node.parent = node.parent.parent.parent;
+                    node.parent.left = node;
+                    node.right.parent = node;
+                    node.left.parent = node;
+
+                    node.setColor(false);
+                    node.right.setColor(true);
+                } else {
+                    parent.parent.left = parent.right;
+                    parent.parent = parent.parent.parent;
+                    parent.right = node.parent.parent;
+                    node.parent.setColor(false);
+                    node.parent.left.setColor(true);
+                }
+            }
             //TODO: Implement rotation when parent and uncle are different
         }
-        return null;
+        return node;
     }
 
     private boolean[] fillBuf(Node<K, V> node) {
