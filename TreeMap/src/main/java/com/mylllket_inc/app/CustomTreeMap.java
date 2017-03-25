@@ -2,7 +2,10 @@ package com.mylllket_inc.app;
 
 import java.util.*;
 
-public class CustomTreeMap<K, V> implements Map<K, V> {
+public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
+
+    private Node<K, V> root;
+
     public int size() {
         return 0;
     }
@@ -24,7 +27,24 @@ public class CustomTreeMap<K, V> implements Map<K, V> {
     }
 
     public V put(K key, V value) {
-        return null;
+        Objects.requireNonNull(key);
+        root = put(root, key, value);
+        return root.getValue();
+    }
+
+    private Node<K, V> put(Node<K, V> node, K key, V value) {
+        if (node == null) {
+            return new Node<>(key, value);
+        } else {
+            if (node.getKey().compareTo(key) > 0) {
+                node.left = put(node.left, key, value);
+            } else if (node.getKey().compareTo(key) < 0) {
+                node.right = put(node.right, key, value);
+            } else {
+                node.setValue(value);
+            }
+        }
+        return node;
     }
 
     public V remove(Object key) {
@@ -51,7 +71,7 @@ public class CustomTreeMap<K, V> implements Map<K, V> {
         return null;
     }
 
-    private class Node<K, V> implements Iterator<Node<K, V>>, Comparator<Node<K, V>> {
+    private class Node<K extends Comparable<K>, V> {
 
         private final K key;
         private V value;
@@ -78,19 +98,5 @@ public class CustomTreeMap<K, V> implements Map<K, V> {
             this.value = value;
         }
 
-        public int compare(Node<K, V> o1, Node<K, V> o2) {
-            return 0;
-        }
-
-        public boolean hasNext() {
-            return false;
-        }
-
-        public Node<K, V> next() {
-            return null;
-        }
-
-        public void remove() {
-        }
     }
 }
