@@ -8,6 +8,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     private Node<K, V> parent;
     private Node<K, V> unckle;
     private boolean direction;
+    private boolean balanced = false;
     private boolean[] buf = new boolean[3];
     private int size = 0;
 
@@ -31,9 +32,9 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             return null;
         } else {
             if (node.getKey().compareTo(key) > 0) {
-                node.left = find(node.left, key);
+                node = find(node.left, key);
             } else if (node.getKey().compareTo(key) < 0) {
-                node.right = find(node.right, key);
+                node = find(node.right, key);
             }
         }
         return node;
@@ -45,6 +46,26 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     public V get(Object key) {
         return null;
+    }
+
+    public boolean getColorByKey(K key) {
+        Node result = find(root, key);
+        return result.getColor();
+    }
+
+    public K getParentByKey(K key) {
+        Node result = find(root, key);
+        return (result.parent == null) ? null : (K) result.parent.getKey();
+    }
+
+    public K getLeftChildByKey(K key) {
+        Node result = find(root, key);
+        return (result.left == null) ? null : (K) result.left.getKey();
+    }
+
+    public K getRightChildByKey(K key) {
+        Node result = find(root, key);
+        return (result.right == null) ? null : (K) result.right.getKey();
     }
 
     public V put(K key, V value) {
@@ -59,24 +80,31 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             size++;
             node = new Node<>(key, value);
             node.parent = parent;
+            if (node.parent != null) {
+                if (node.parent.parent != null)
+                    node = balance(node, direction);
+            }
             return node;
         } else {
             if (node.getKey().compareTo(key) > 0) {
-
+                direction = false;
                 node.left = put(node.left, key, value, node);
-
-                if (node.parent != null) {
-                    direction = false;
-                    node = balance(node.left, node, node.parent.right, direction);
+                if (balanced) {
+                    Node temp = find(node.left, node.getKey());
+                    if (temp != null) {
+                        node = temp.left;
+                        node.right.left = null;
+                    }
                 }
-
             } else if (node.getKey().compareTo(key) < 0) {
-
+                direction = true;
                 node.right = put(node.right, key, value, node);
-
-                if (node.parent != null) {
-                    direction = true;
-                    node = balance(node.right, node, node.parent.right, direction);
+                if (balanced) {
+                    Node temp = find(node.right, node.getKey());
+                    if (temp != null) {
+                        node = temp.right;
+                        node.left.right = null;
+                    }
                 }
             } else {
                 node.setValue(value);
@@ -85,49 +113,56 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         return node;
     }
 
-    private Node<K, V> balance(Node<K, V> node, Node<K, V> parent, Node<K, V> uncle, boolean direction) {
-        boolean parentColor = (parent != null) ? parent.getColor() : false;
+    private Node<K, V> balance(Node<K, V> node, boolean direction) {
+        Node uncle = (node.parent.key.compareTo(node.parent.parent.key) > 0) ? node.parent.parent.left : node.parent.parent.right;
+        boolean parentColor = node.parent.getColor();
         boolean uncleColor = (uncle != null) ? uncle.getColor() : false;
         if (parentColor && uncleColor) {
-            parent.setColor(false);
-            uncle.setColor(false);
-        } else {
-            if (parentColor == true && uncleColor == false) {
+            node.parent.setColor(false);
+            if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
+                node.parent.parent.left.setColor(false);
+            } else {
+                node.parent.parent.right.setColor(false);
+            }
+        } else if (parentColor && !uncleColor) {
+            if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
-                    node.parent.parent.left = node.right;
-                    node.right = node.parent.parent;
-                    node.parent.right = node.left;
-                    node.left = node.parent;
-                    node.parent = node.parent.parent.parent;
-                    node.parent.left = node;
-                    node.right.parent = node;
-                    node.left.parent = node;
+                    //TODO: When Node added to the right branch as right leaf
+                    node.parent.parent.right = node.parent.left;
+                    node.parent.left = node.parent.parent;
+                    node.parent.parent = node.parent.left.parent;
+                    node.parent.left.parent = node.parent;
+                    node.parent.parent.right = node.parent;
 
-                    node.setColor(false);
-                    node.right.setColor(true);
-                } else {
-                    parent.parent.left = parent.right;
-                    parent.parent = parent.parent.parent;
-                    parent.right = node.parent.parent;
                     node.parent.setColor(false);
                     node.parent.left.setColor(true);
+
+                    balanced = true;
+                    return node;
+                } else {
+                    //TODO: When Node added to the right branch as left leaf
+                }
+            } else {
+                if (direction) {
+                    //TODO: When Node added to the left branch as right leaf
+                } else {
+                    //TODO: When Node added to the left branch as left leaf
+
+                    node.parent.parent.left = node.parent.right;
+                    node.parent.right = node.parent.parent;
+                    node.parent.parent = node.parent.right.parent;
+                    node.parent.right.parent = node.parent;
+                    node.parent.parent.left = node.parent;
+
+                    node.parent.setColor(false);
+                    node.parent.right.setColor(true);
+
+                    balanced = true;
+                    return node;
                 }
             }
-            //TODO: Implement rotation when parent and uncle are different
         }
         return node;
-    }
-
-    private boolean[] fillBuf(Node<K, V> node) {
-        boolean[] buf = new boolean[3];
-        buf[0] = node.getColor();
-        if (node.left != null) {
-            buf[1] = node.left.getColor();
-        }
-        if (node.right != null) {
-            buf[2] = node.right.getColor();
-        }
-        return buf;
     }
 
     public V remove(Object key) {
