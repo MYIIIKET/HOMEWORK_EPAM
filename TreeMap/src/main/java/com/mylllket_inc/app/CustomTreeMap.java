@@ -132,7 +132,10 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     node.parent.left = node.parent.parent;
                     node.parent.parent = node.parent.left.parent;
                     node.parent.left.parent = node.parent;
-                    node.parent.parent.right = node.parent;
+                    if(node.parent.parent!=null){
+                        node.parent.parent.right = node.parent;
+                    }
+
 
                     node.parent.setColor(false);
                     node.parent.left.setColor(true);
@@ -153,6 +156,9 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     node.parent.parent = node.parent.right.parent;
                     node.parent.right.parent = node.parent;
                     node.parent.parent.left = node.parent;
+                    if(node.parent.parent!=null){
+                        node.parent.parent.left = node.parent;
+                    }
 
                     node.parent.setColor(false);
                     node.parent.right.setColor(true);

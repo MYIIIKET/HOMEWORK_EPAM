@@ -203,4 +203,27 @@ public class CustomTreeMapTest {
     }
 
 
+    @Test
+    public void test() {
+        CustomTreeMap a = new CustomTreeMap();
+        a.put(5, 1);
+        a.put(6, 1);
+        a.put(7, 1);
+        assertFalse(a.getColorByKey(6));
+        assertEquals(a.getParentByKey(6), null);
+        assertEquals(a.getRightChildByKey(6),7);
+        assertEquals(a.getLeftChildByKey(6),5);
+
+        assertTrue(a.getColorByKey(5));
+        assertEquals(a.getParentByKey(5), 6);
+        assertEquals(a.getRightChildByKey(5),null);
+        assertEquals(a.getLeftChildByKey(5),null);
+
+        assertTrue(a.getColorByKey(7));
+        assertEquals(a.getParentByKey(7), 6);
+        assertEquals(a.getRightChildByKey(7),null);
+        assertEquals(a.getLeftChildByKey(7),null);
+    }
+
+
 }
