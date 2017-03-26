@@ -80,10 +80,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             size++;
             node = new Node<>(key, value);
             node.parent = parent;
-            if (node.parent != null) {
-                if (node.parent.parent != null)
-                    node = balance(node, direction);
-            }
+            node = balance(node, direction);
             return node;
         } else {
             if (node.getKey().compareTo(key) > 0) {
@@ -96,6 +93,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                         node.right.left = null;
                     }
                 }
+//                node.left = balance(node.left, direction);
             } else if (node.getKey().compareTo(key) < 0) {
                 direction = true;
                 node.right = put(node.right, key, value, node);
@@ -106,6 +104,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                         node.left.right = null;
                     }
                 }
+//                node.right = balance(node.right, direction);
             } else {
                 node.setValue(value);
             }
@@ -114,6 +113,17 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
     private Node<K, V> balance(Node<K, V> node, boolean direction) {
+        if (node.parent != null) {
+            if (node.parent.parent != null) {
+
+            } else {
+                return node;
+            }
+
+        } else {
+            return node;
+        }
+
         Node uncle = (node.parent.key.compareTo(node.parent.parent.key) > 0) ? node.parent.parent.left : node.parent.parent.right;
         boolean parentColor = node.parent.getColor();
         boolean uncleColor = (uncle != null) ? uncle.getColor() : false;
@@ -124,6 +134,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             } else {
                 node.parent.parent.right.setColor(false);
             }
+            node.parent.parent.setColor(true);
         } else if (parentColor && !uncleColor) {
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
@@ -132,7 +143,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     node.parent.left = node.parent.parent;
                     node.parent.parent = node.parent.left.parent;
                     node.parent.left.parent = node.parent;
-                    if(node.parent.parent!=null){
+                    if (node.parent.parent != null) {
                         node.parent.parent.right = node.parent;
                     }
 
@@ -155,8 +166,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     node.parent.right = node.parent.parent;
                     node.parent.parent = node.parent.right.parent;
                     node.parent.right.parent = node.parent;
-                    node.parent.parent.left = node.parent;
-                    if(node.parent.parent!=null){
+                    if (node.parent.parent != null) {
                         node.parent.parent.left = node.parent;
                     }
 
