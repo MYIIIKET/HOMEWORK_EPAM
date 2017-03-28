@@ -85,12 +85,17 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         } else {
             if (node.getKey().compareTo(key) > 0) {
                 direction = false;
-                node.left = put(node.left, key, value, node);
+                if(node.left!=null){
+                    node.parent=put(node.left, key, value, node);
+                }else{
+                    node.left = put(node.left, key, value, node);
+                }
                 if (balanced) {
                     Node temp = find(node.left, node.getKey());
                     if (temp != null) {
                         node = temp.left;
                         node.right.left = null;
+                        node = balance(node, direction);
                     }
                 }
 //                node.left = balance(node.left, direction);
@@ -102,6 +107,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     if (temp != null) {
                         node = temp.right;
                         node.left.right = null;
+                        node = balance(node, direction);
                     }
                 }
 //                node.right = balance(node.right, direction);
