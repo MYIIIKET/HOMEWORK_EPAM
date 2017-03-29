@@ -5,9 +5,8 @@ import java.util.*;
 public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> root;
-    private boolean direction;
-    private boolean balanced = false;
     private int size = 0;
+    private boolean direction = false;
 
     public int size() {
         return size;
@@ -101,7 +100,14 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                 }
                 node = balance(node, direction);
             } else if (node.getKey().compareTo(key) < 0) {
-                //TODO: When we put to the right branch or leaf
+                direction = true;
+                Node tempNode = put(node.right, key, value, node);
+                if (isHigher(tempNode, node.getKey())) {
+                    node = tempNode;
+                } else {
+                    node.right = tempNode;
+                }
+                node = balance(node, direction);
             } else {
                 node.setValue(value);
             }
@@ -137,6 +143,18 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
                     //TODO: When Node added to the right branch as right leaf
+                    node.parent.parent.right = node.parent.left;
+                    if (node.parent.left != null) {
+                        node.parent.left.parent = node.parent.parent;
+                    }
+                    node.parent.left = node.parent.parent;
+                    node.parent.parent = node.parent.left.parent;
+                    node.parent.left.parent = node.parent;
+
+                    node.parent.setColor(false);
+                    node.parent.left.setColor(true);
+
+                    return node;
                 } else {
                     //TODO: When Node added to the right branch as left leaf
                 }
@@ -157,7 +175,6 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     node.parent.setColor(false);
                     node.parent.right.setColor(true);
 
-                    balanced = true;
                     return node;
                 }
             }
