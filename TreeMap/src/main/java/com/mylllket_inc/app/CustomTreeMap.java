@@ -160,12 +160,12 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     //TODO: When Node added to the left branch as left leaf
 
                     node.parent.parent.left = node.parent.right;
+                    if(node.parent.right!=null){
+                        node.parent.right.parent= node.parent.parent;
+                    }
                     node.parent.right = node.parent.parent;
                     node.parent.parent = node.parent.right.parent;
                     node.parent.right.parent = node.parent;
-                    if (node.parent.parent != null) {
-                        node.parent.parent.left = node.parent;
-                    }
 
                     node.parent.setColor(false);
                     node.parent.right.setColor(true);
