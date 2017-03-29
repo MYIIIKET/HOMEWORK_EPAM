@@ -5,11 +5,8 @@ import java.util.*;
 public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> root;
-    private Node<K, V> parent;
-    private Node<K, V> unckle;
     private boolean direction;
     private boolean balanced = false;
-    private boolean[] buf = new boolean[3];
     private int size = 0;
 
     public int size() {
@@ -68,6 +65,17 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         return (result.right == null) ? null : (K) result.right.getKey();
     }
 
+    public boolean isHigher(Node node, K key) {
+        Node right = find(node.right, key);
+        Node left = find(node.left, key);
+        if (right == null) {
+            if (left == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public V put(K key, V value) {
         Objects.requireNonNull(key);
         root = put(root, key, value, null);
@@ -85,32 +93,15 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         } else {
             if (node.getKey().compareTo(key) > 0) {
                 direction = false;
-                if(node.left!=null){
-                    node.parent=put(node.left, key, value, node);
-                }else{
-                    node.left = put(node.left, key, value, node);
+                Node tempNode = put(node.left, key, value, node);
+                if (isHigher(tempNode, node.getKey())) {
+                    node = tempNode;
+                } else {
+                    node.left = tempNode;
                 }
-                if (balanced) {
-                    Node temp = find(node.left, node.getKey());
-                    if (temp != null) {
-                        node = temp.left;
-                        node.right.left = null;
-                        node = balance(node, direction);
-                    }
-                }
-//                node.left = balance(node.left, direction);
+                node = balance(node, direction);
             } else if (node.getKey().compareTo(key) < 0) {
-                direction = true;
-                node.right = put(node.right, key, value, node);
-                if (balanced) {
-                    Node temp = find(node.right, node.getKey());
-                    if (temp != null) {
-                        node = temp.right;
-                        node.left.right = null;
-                        node = balance(node, direction);
-                    }
-                }
-//                node.right = balance(node.right, direction);
+                //TODO: When we put to the right branch or leaf
             } else {
                 node.setValue(value);
             }
