@@ -124,7 +124,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         Node uncle = (node.parent.key.compareTo(node.parent.parent.key) > 0) ? node.parent.parent.left : node.parent.parent.right;
         boolean parentColor = node.parent.getColor();
         boolean uncleColor = (uncle != null) ? uncle.getColor() : false;
-        if (parentColor && uncleColor) {
+        boolean nodeColor = node.getColor();
+        if (parentColor && uncleColor && nodeColor) {
             node.parent.setColor(false);
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 node.parent.parent.left.setColor(false);
@@ -132,24 +133,10 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                 node.parent.parent.right.setColor(false);
             }
             node.parent.parent.setColor(true);
-        } else if (parentColor && !uncleColor) {
+        } else if (parentColor && !uncleColor && nodeColor) {
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
                     //TODO: When Node added to the right branch as right leaf
-                    node.parent.parent.right = node.parent.left;
-                    node.parent.left = node.parent.parent;
-                    node.parent.parent = node.parent.left.parent;
-                    node.parent.left.parent = node.parent;
-                    if (node.parent.parent != null) {
-                        node.parent.parent.right = node.parent;
-                    }
-
-
-                    node.parent.setColor(false);
-                    node.parent.left.setColor(true);
-
-                    balanced = true;
-                    return node;
                 } else {
                     //TODO: When Node added to the right branch as left leaf
                 }
@@ -160,8 +147,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     //TODO: When Node added to the left branch as left leaf
 
                     node.parent.parent.left = node.parent.right;
-                    if(node.parent.right!=null){
-                        node.parent.right.parent= node.parent.parent;
+                    if (node.parent.right != null) {
+                        node.parent.right.parent = node.parent.parent;
                     }
                     node.parent.right = node.parent.parent;
                     node.parent.parent = node.parent.right.parent;
