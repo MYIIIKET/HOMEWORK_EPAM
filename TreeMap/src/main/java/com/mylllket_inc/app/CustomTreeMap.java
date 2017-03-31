@@ -137,28 +137,10 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
                     //TODO: When Node added to the right branch as right leaf
-
                     return rightRightRotate(node);
                 } else {
                     //TODO: When Node added to the right branch as left leaf
-                    node.parent.parent.right = node.left;
-                    if (node.left != null) {
-                        node.left.parent = node.parent.parent;
-                    }
-                    node.left = node.parent.parent;
-                    node.parent.left = node.right;
-                    if (node.right != null) {
-                        node.right.parent = node.parent;
-                    }
-                    node.right = node.parent;
-                    node.right.parent = node;
-                    node.parent = node.left.parent;
-                    node.left.parent = node;
-
-                    node.setColor(false);
-                    node.left.setColor(true);
-
-                    return node;
+                    return rightLeftRotate(node);
                 }
             } else {
                 if (direction) {
@@ -223,6 +205,26 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
         node.parent.setColor(false);
         node.parent.left.setColor(true);
+        return node;
+    }
+
+    private Node<K, V> rightLeftRotate(Node<K, V> node) {
+        node.parent.parent.right = node.left;
+        if (node.left != null) {
+            node.left.parent = node.parent.parent;
+        }
+        node.left = node.parent.parent;
+        node.parent.left = node.right;
+        if (node.right != null) {
+            node.right.parent = node.parent;
+        }
+        node.right = node.parent;
+        node.right.parent = node;
+        node.parent = node.left.parent;
+        node.left.parent = node;
+
+        node.setColor(false);
+        node.left.setColor(true);
         return node;
     }
 
