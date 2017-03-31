@@ -284,35 +284,27 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                 innerDirection = true;
                 maxNode = maxNode.right;
             }
-            if (direction) {
-                if (innerDirection) {
-
-                } else {
-
+            if (innerDirection) {
+                maxNode.parent.right = null;
+                maxNode.parent = node.parent;
+                maxNode.left = node.left;
+                if (node.left != null) {
+                    node.left.parent = maxNode;
                 }
+                maxNode.right = node.right;
+                if (node.right != null) {
+                    node.right.parent = maxNode;
+                }
+                node.parent.left = maxNode;
+                node = maxNode;
             } else {
-                if (innerDirection) {
-                    maxNode.parent.right = null;
-                    maxNode.parent = node.parent;
-                    maxNode.left = node.left;
-                    if (node.left != null) {
-                        node.left.parent = maxNode;
-                    }
-                    maxNode.right = node.right;
-                    if (node.right != null) {
-                        node.right.parent = maxNode;
-                    }
-                    node.parent.left = maxNode;
-                    node = maxNode;
-                } else {
-                    maxNode.parent = node.parent;
-                    maxNode.right = node.right;
-                    node.parent.left = maxNode;
-                    if (node.right != null) {
-                        node.right.parent = maxNode;
-                    }
-                    node = maxNode;
+                maxNode.parent = node.parent;
+                maxNode.right = node.right;
+                node.parent.left = maxNode;
+                if (node.right != null) {
+                    node.right.parent = maxNode;
                 }
+                node = maxNode;
             }
         }
         return node;

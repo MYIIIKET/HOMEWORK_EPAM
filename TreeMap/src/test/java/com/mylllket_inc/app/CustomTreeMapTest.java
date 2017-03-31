@@ -410,7 +410,10 @@ public class CustomTreeMapTest {
 //        a.remove(3);
 //        a.remove(4);
 //        a.remove(5);
-
+//        a.remove(7);
+//        a.remove(17);
+//        a.remove(24);
+//        a.remove(11);
     }
 
 
