@@ -375,46 +375,7 @@ public class CustomTreeMapTest {
         assertEquals(a.getRightChildByKey(2), 3);
         assertEquals(a.getLeftChildByKey(2), 1);
     }
-
-    @Test
-    public void testRightRightRotation() {
-        CustomTreeMap a = new CustomTreeMap();
-        a.put(20, 1);
-        a.put(19, 1);
-        a.put(18, 1);
-        a.put(17, 1);
-        a.put(16, 1);
-        a.put(15, 1);
-        a.put(14, 1);
-        a.put(13, 1);
-        a.put(12, 1);
-        a.put(11, 1);
-        a.put(10, 1);
-        a.put(9, 1);
-        a.put(8, 1);
-        a.put(7, 1);
-        a.put(6, 1);
-        a.put(5, 1);
-        a.put(4, 1);
-        a.put(3, 1);
-        a.put(2, 1);
-        a.put(1, 1);
-        a.put(21, 1);
-        a.put(22, 1);
-        a.put(23, 1);
-        a.put(24, 1);
-        a.put(25, 1);
-
-//        a.remove(1);
-//        a.remove(2);
-//        a.remove(3);
-//        a.remove(4);
-//        a.remove(5);
-//        a.remove(7);
-//        a.remove(17);
-//        a.remove(24);
-//        a.remove(11);
-    }
+    
 
 
 }

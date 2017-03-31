@@ -233,6 +233,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     public V remove(Object key) {
         Objects.requireNonNull(key);
         root = remove(root, (K) key, null);
+        root.setColor(false);
         return null;
     }
 
@@ -244,10 +245,12 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                 direction = false;
                 Node tempNode = remove(node.left, key, node);
                 node.left = tempNode;
+                node.left = balance(node.left, direction);
             } else if (node.getKey().compareTo(key) < 0) {
                 direction = true;
                 Node tempNode = remove(node.right, key, node);
                 node.right = tempNode;
+                node.right = balance(node.right, direction);
             }
         }
         return node;
