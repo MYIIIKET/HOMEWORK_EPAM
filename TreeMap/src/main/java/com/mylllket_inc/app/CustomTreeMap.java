@@ -148,18 +148,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
                     return leftRightRotate(node);
                 } else {
                     //TODO: When Node added to the left branch as left leaf
-                    node.parent.parent.left = node.parent.right;
-                    if (node.parent.right != null) {
-                        node.parent.right.parent = node.parent.parent;
-                    }
-                    node.parent.right = node.parent.parent;
-                    node.parent.parent = node.parent.right.parent;
-                    node.parent.right.parent = node.parent;
-
-                    node.parent.setColor(false);
-                    node.parent.right.setColor(true);
-
-                    return node;
+                    return leftLeftRotate(node);
                 }
             }
         }
@@ -228,6 +217,20 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
         node.setColor(false);
         node.right.setColor(true);
+        return node;
+    }
+
+    private Node<K, V> leftLeftRotate(Node<K, V> node) {
+        node.parent.parent.left = node.parent.right;
+        if (node.parent.right != null) {
+            node.parent.right.parent = node.parent.parent;
+        }
+        node.parent.right = node.parent.parent;
+        node.parent.parent = node.parent.right.parent;
+        node.parent.right.parent = node.parent;
+
+        node.parent.setColor(false);
+        node.parent.right.setColor(true);
         return node;
     }
 
