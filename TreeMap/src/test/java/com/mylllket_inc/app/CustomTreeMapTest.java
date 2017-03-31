@@ -261,119 +261,156 @@ public class CustomTreeMapTest {
     @Test
     public void testThatInsertingOfNineElementsToTheLeftBranchAsRightLeafIsCorrect() {
         CustomTreeMap a = new CustomTreeMap();
-        a.put(9,1);
-        a.put(7,1);
-        a.put(8,1);
-        a.put(5,1);
-        a.put(6,1);
-        a.put(3,1);
-        a.put(4,1);
-        a.put(1,1);
-        a.put(2,1);
+        a.put(9, 1);
+        a.put(7, 1);
+        a.put(8, 1);
+        a.put(5, 1);
+        a.put(6, 1);
+        a.put(3, 1);
+        a.put(4, 1);
+        a.put(1, 1);
+        a.put(2, 1);
 
-        assertTrue(a.getColorByKey(         8));
-        assertEquals(a.getParentByKey(      8), 6);
-        assertEquals(a.getRightChildByKey(  8), 9);
-        assertEquals(a.getLeftChildByKey(   8), 7);
+        assertTrue(a.getColorByKey(8));
+        assertEquals(a.getParentByKey(8), 6);
+        assertEquals(a.getRightChildByKey(8), 9);
+        assertEquals(a.getLeftChildByKey(8), 7);
 
-        assertFalse(a.getColorByKey(        7));
-        assertEquals(a.getParentByKey(      7), 8);
-        assertEquals(a.getRightChildByKey(  7), null);
-        assertEquals(a.getLeftChildByKey(   7), null);
+        assertFalse(a.getColorByKey(7));
+        assertEquals(a.getParentByKey(7), 8);
+        assertEquals(a.getRightChildByKey(7), null);
+        assertEquals(a.getLeftChildByKey(7), null);
 
-        assertFalse(a.getColorByKey(        9));
-        assertEquals(a.getParentByKey(      9), 8);
-        assertEquals(a.getRightChildByKey(  9), null);
-        assertEquals(a.getLeftChildByKey(   9), null);
+        assertFalse(a.getColorByKey(9));
+        assertEquals(a.getParentByKey(9), 8);
+        assertEquals(a.getRightChildByKey(9), null);
+        assertEquals(a.getLeftChildByKey(9), null);
 
-        assertFalse(a.getColorByKey(        5));
-        assertEquals(a.getParentByKey(      5), 4);
-        assertEquals(a.getRightChildByKey(  5), null);
-        assertEquals(a.getLeftChildByKey(   5), null);
+        assertFalse(a.getColorByKey(5));
+        assertEquals(a.getParentByKey(5), 4);
+        assertEquals(a.getRightChildByKey(5), null);
+        assertEquals(a.getLeftChildByKey(5), null);
 
-        assertFalse(a.getColorByKey(        6));
-        assertEquals(a.getParentByKey(      6), null);
-        assertEquals(a.getRightChildByKey(  6), 8);
-        assertEquals(a.getLeftChildByKey(   6), 4);
+        assertFalse(a.getColorByKey(6));
+        assertEquals(a.getParentByKey(6), null);
+        assertEquals(a.getRightChildByKey(6), 8);
+        assertEquals(a.getLeftChildByKey(6), 4);
 
-        assertTrue(a.getColorByKey(         3));
-        assertEquals(a.getParentByKey(      3), 2);
-        assertEquals(a.getRightChildByKey(  3), null);
-        assertEquals(a.getLeftChildByKey(   3), null);
+        assertTrue(a.getColorByKey(3));
+        assertEquals(a.getParentByKey(3), 2);
+        assertEquals(a.getRightChildByKey(3), null);
+        assertEquals(a.getLeftChildByKey(3), null);
 
-        assertTrue(a.getColorByKey(         4));
-        assertEquals(a.getParentByKey(      4), 6);
-        assertEquals(a.getRightChildByKey(  4), 5);
-        assertEquals(a.getLeftChildByKey(   4), 2);
+        assertTrue(a.getColorByKey(4));
+        assertEquals(a.getParentByKey(4), 6);
+        assertEquals(a.getRightChildByKey(4), 5);
+        assertEquals(a.getLeftChildByKey(4), 2);
 
-        assertTrue(a.getColorByKey(         1));
-        assertEquals(a.getParentByKey(      1), 2);
-        assertEquals(a.getRightChildByKey(  1), null);
-        assertEquals(a.getLeftChildByKey(   1), null);
+        assertTrue(a.getColorByKey(1));
+        assertEquals(a.getParentByKey(1), 2);
+        assertEquals(a.getRightChildByKey(1), null);
+        assertEquals(a.getLeftChildByKey(1), null);
 
-        assertFalse(a.getColorByKey(        2));
-        assertEquals(a.getParentByKey(      2), 4);
-        assertEquals(a.getRightChildByKey(  2), 3);
-        assertEquals(a.getLeftChildByKey(   2), 1);
+        assertFalse(a.getColorByKey(2));
+        assertEquals(a.getParentByKey(2), 4);
+        assertEquals(a.getRightChildByKey(2), 3);
+        assertEquals(a.getLeftChildByKey(2), 1);
     }
 
     @Test
     public void testThatInsertingOfNineElementsToTheRightBranchAsLeftLeafIsCorrect() {
         CustomTreeMap a = new CustomTreeMap();
-        a.put(1,1);
-        a.put(3,1);
-        a.put(2,1);
-        a.put(5,1);
-        a.put(4,1);
-        a.put(7,1);
-        a.put(6,1);
-        a.put(9,1);
-        a.put(8,1);
+        a.put(1, 1);
+        a.put(3, 1);
+        a.put(2, 1);
+        a.put(5, 1);
+        a.put(4, 1);
+        a.put(7, 1);
+        a.put(6, 1);
+        a.put(9, 1);
+        a.put(8, 1);
 
-        assertFalse(a.getColorByKey(        8));
-        assertEquals(a.getParentByKey(      8), 6);
-        assertEquals(a.getRightChildByKey(  8), 9);
-        assertEquals(a.getLeftChildByKey(   8), 7);
+        assertFalse(a.getColorByKey(8));
+        assertEquals(a.getParentByKey(8), 6);
+        assertEquals(a.getRightChildByKey(8), 9);
+        assertEquals(a.getLeftChildByKey(8), 7);
 
-        assertTrue(a.getColorByKey(         7));
-        assertEquals(a.getParentByKey(      7), 8);
-        assertEquals(a.getRightChildByKey(  7), null);
-        assertEquals(a.getLeftChildByKey(   7), null);
+        assertTrue(a.getColorByKey(7));
+        assertEquals(a.getParentByKey(7), 8);
+        assertEquals(a.getRightChildByKey(7), null);
+        assertEquals(a.getLeftChildByKey(7), null);
 
-        assertTrue(a.getColorByKey(         9));
-        assertEquals(a.getParentByKey(      9), 8);
-        assertEquals(a.getRightChildByKey(  9), null);
-        assertEquals(a.getLeftChildByKey(   9), null);
+        assertTrue(a.getColorByKey(9));
+        assertEquals(a.getParentByKey(9), 8);
+        assertEquals(a.getRightChildByKey(9), null);
+        assertEquals(a.getLeftChildByKey(9), null);
 
-        assertFalse(a.getColorByKey(        5));
-        assertEquals(a.getParentByKey(      5), 6);
-        assertEquals(a.getRightChildByKey(  5), null);
-        assertEquals(a.getLeftChildByKey(   5), null);
+        assertFalse(a.getColorByKey(5));
+        assertEquals(a.getParentByKey(5), 6);
+        assertEquals(a.getRightChildByKey(5), null);
+        assertEquals(a.getLeftChildByKey(5), null);
 
-        assertTrue(a.getColorByKey(         6));
-        assertEquals(a.getParentByKey(      6), 4);
-        assertEquals(a.getRightChildByKey(  6), 8);
-        assertEquals(a.getLeftChildByKey(   6), 5);
+        assertTrue(a.getColorByKey(6));
+        assertEquals(a.getParentByKey(6), 4);
+        assertEquals(a.getRightChildByKey(6), 8);
+        assertEquals(a.getLeftChildByKey(6), 5);
 
-        assertFalse(a.getColorByKey(        3));
-        assertEquals(a.getParentByKey(      3), 2);
-        assertEquals(a.getRightChildByKey(  3), null);
-        assertEquals(a.getLeftChildByKey(   3), null);
+        assertFalse(a.getColorByKey(3));
+        assertEquals(a.getParentByKey(3), 2);
+        assertEquals(a.getRightChildByKey(3), null);
+        assertEquals(a.getLeftChildByKey(3), null);
 
-        assertFalse(a.getColorByKey(        4));
-        assertEquals(a.getParentByKey(      4), null);
-        assertEquals(a.getRightChildByKey(  4), 6);
-        assertEquals(a.getLeftChildByKey(   4), 2);
+        assertFalse(a.getColorByKey(4));
+        assertEquals(a.getParentByKey(4), null);
+        assertEquals(a.getRightChildByKey(4), 6);
+        assertEquals(a.getLeftChildByKey(4), 2);
 
-        assertFalse(a.getColorByKey(        1));
-        assertEquals(a.getParentByKey(      1), 2);
-        assertEquals(a.getRightChildByKey(  1), null);
-        assertEquals(a.getLeftChildByKey(   1), null);
+        assertFalse(a.getColorByKey(1));
+        assertEquals(a.getParentByKey(1), 2);
+        assertEquals(a.getRightChildByKey(1), null);
+        assertEquals(a.getLeftChildByKey(1), null);
 
-        assertTrue(a.getColorByKey(         2));
-        assertEquals(a.getParentByKey(      2), 4);
-        assertEquals(a.getRightChildByKey(  2), 3);
-        assertEquals(a.getLeftChildByKey(   2), 1);
+        assertTrue(a.getColorByKey(2));
+        assertEquals(a.getParentByKey(2), 4);
+        assertEquals(a.getRightChildByKey(2), 3);
+        assertEquals(a.getLeftChildByKey(2), 1);
+    }
+
+    @Test
+    public void testRightRightRotation() {
+        CustomTreeMap a = new CustomTreeMap();
+        a.put(20, 1);
+        a.put(19, 1);
+        a.put(18, 1);
+        a.put(17, 1);
+        a.put(16, 1);
+        a.put(15, 1);
+        a.put(14, 1);
+        a.put(13, 1);
+        a.put(12, 1);
+        a.put(11, 1);
+        a.put(10, 1);
+        a.put(9, 1);
+        a.put(8, 1);
+        a.put(7, 1);
+        a.put(6, 1);
+        a.put(5, 1);
+        a.put(4, 1);
+        a.put(3, 1);
+        a.put(2, 1);
+        a.put(1, 1);
+        a.put(21, 1);
+        a.put(22, 1);
+        a.put(23, 1);
+        a.put(24, 1);
+        a.put(25, 1);
+
+//        a.remove(1);
+//        a.remove(2);
+//        a.remove(3);
+//        a.remove(4);
+//        a.remove(5);
+
     }
 
 

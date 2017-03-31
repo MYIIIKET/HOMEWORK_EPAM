@@ -231,8 +231,91 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
 
     public V remove(Object key) {
-
+        Objects.requireNonNull(key);
+        root = remove(root, (K) key, null);
         return null;
+    }
+
+    private Node<K, V> remove(Node<K, V> node, K key, Node<K, V> parent) {
+        if (key.equals(node.getKey())) {
+            node = balancedRemove(node, direction);
+        } else {
+            if (node.getKey().compareTo(key) > 0) {
+                direction = false;
+                Node tempNode = remove(node.left, key, node);
+                node.left = tempNode;
+            } else if (node.getKey().compareTo(key) < 0) {
+                direction = true;
+                Node tempNode = remove(node.right, key, node);
+                node.right = tempNode;
+            }
+        }
+        return node;
+    }
+
+    private Node balancedRemove(Node node, boolean direction) {
+        if (node.left == null && node.right == null) {
+            if (direction) {
+                node.parent.right = null;
+            } else {
+                node.parent.left = null;
+            }
+            node = null;
+        } else if (node.left != null && node.right == null) {
+            if (direction) {
+                node.parent.right = node.left;
+            } else {
+                node.parent.left = node.left;
+            }
+            node.left.parent = node.parent;
+            node = node.left;
+        } else if (node.left == null && node.right != null) {
+            if (direction) {
+                node.parent.right = node.right;
+            } else {
+                node.parent.left = node.right;
+            }
+            node.right.parent = node.parent;
+            node = node.right;
+        } else {
+            boolean innerDirection = false;
+            Node maxNode = node.left;
+            while (maxNode.right != null) {
+                innerDirection = true;
+                maxNode = maxNode.right;
+            }
+            if (direction) {
+                if (innerDirection) {
+
+                } else {
+
+                }
+            } else {
+                if (innerDirection) {
+                    maxNode.parent.right = null;
+                    maxNode.parent = node.parent;
+                    maxNode.left = node.left;
+                    if (node.left != null) {
+                        node.left.parent = maxNode;
+                    }
+                    maxNode.right = node.right;
+                    if (node.right != null) {
+                        node.right.parent = maxNode;
+                    }
+                    node.parent.left = maxNode;
+                    node = maxNode;
+                } else {
+                    maxNode.parent = node.parent;
+                    maxNode.right = node.right;
+                    node.parent.left = maxNode;
+                    if (node.right != null) {
+                        node.right.parent = maxNode;
+                    }
+                    node = maxNode;
+                }
+            }
+        }
+        return node;
     }
 
 
@@ -258,7 +341,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private class Node<K extends Comparable<K>, V> {
 
-        private final K key;
+        private K key;
         private V value;
 
         private Node parent;
@@ -303,6 +386,10 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
         public void setValue(V value) {
             this.value = value;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
         }
     }
 
