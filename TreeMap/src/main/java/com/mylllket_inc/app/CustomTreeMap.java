@@ -116,14 +116,9 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
     private Node<K, V> balance(Node<K, V> node, boolean direction) {
-        if (node.parent != null) {
-            if (node.parent.parent != null) {
-
-            } else {
-                return node;
-            }
-
-        } else {
+        if (node.parent == null) {
+            return node;
+        } else if (node.parent.parent == null) {
             return node;
         }
 
