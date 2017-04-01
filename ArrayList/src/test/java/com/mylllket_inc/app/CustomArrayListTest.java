@@ -187,5 +187,61 @@ public class CustomArrayListTest {
         assertEquals(11, a.size());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantInsertNullElementInTheList() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.add(10, null);
+    }
+
+    @Test
+    public void testThatWeCanGetIndexByElement() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(5, a.indexOf(5));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantGetIndexByNullElement() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.indexOf(null);
+    }
+
+    @Test
+    public void testThatWeCantGetIndexByElement() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(-1, a.indexOf(11));
+    }
+
+    @Test
+    public void testThatWeCanGetLastIndexByElement() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.add(5);
+        assertEquals(10, a.lastIndexOf(5));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantGetLastIndexByNullElement() {
+        CustomArrayList a = new CustomArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.add(5);
+        a.lastIndexOf(null);
+    }
+
 
 }

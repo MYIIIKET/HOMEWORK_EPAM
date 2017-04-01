@@ -103,6 +103,7 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public void add(int index, T element) {
+        Objects.requireNonNull(element);
         if (index >= 0 || index < data.length) {
             Object[] firstPart = Arrays.copyOfRange(data, 0, index);
             Object[] secondPart = Arrays.copyOfRange(data, index, data.length);
@@ -126,11 +127,23 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public int indexOf(Object o) {
-        return 0;
+        Objects.requireNonNull(o);
+        for (int i = 0; i < size; i++) {
+            if (data[i].equals(o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {
-        return 0;
+        Objects.requireNonNull(o);
+        for (int i = size - 1; i >= 0; i--) {
+            if (data[i].equals(o)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public ListIterator<T> listIterator() {
