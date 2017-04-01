@@ -264,7 +264,7 @@ public class CustomLinkedList<T> implements List<T> {
             }
 
             public T previous() {
-                return getNode(pointer--).prev.value;
+                return getNode(--pointer).prev.value;
             }
 
             public int nextIndex() {
