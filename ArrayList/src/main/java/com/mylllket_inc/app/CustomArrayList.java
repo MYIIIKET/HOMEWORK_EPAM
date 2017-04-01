@@ -18,6 +18,7 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public boolean contains(Object o) {
+        Objects.requireNonNull(o);
         for (int i = 0; i < size; i++) {
             if (data[i].equals(o)) {
                 return true;
@@ -39,8 +40,10 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public boolean add(T t) {
-        if (size == data.length) {
+        Objects.requireNonNull(t);
+        if (size >= data.length) {
             data = Arrays.copyOf(data, ((data.length * 3) / 2) + 1);
+            add(t);
         } else {
             data[size++] = t;
         }
@@ -77,19 +80,41 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public void clear() {
-
+        data = new Object[CAPACITY];
+        size = 0;
     }
 
     public T get(int index) {
-        return null;
+        if (index <= 0 || index > data.length)
+            return null;
+        return (T) data[index];
     }
 
     public T set(int index, T element) {
-        return null;
+        Objects.requireNonNull(element);
+        if (index <= 0 || index > data.length) {
+            if (data[index] != null) {
+                data[index] = element;
+            } else {
+                return null;
+            }
+        }
+        return (T) (((index - 1) < 0) ? data[index] : data[index - 1]);
     }
 
     public void add(int index, T element) {
-
+        if (index >= 0 || index < data.length) {
+            Object[] firstPart = Arrays.copyOfRange(data, 0, index);
+            Object[] secondPart = Arrays.copyOfRange(data, index, data.length);
+            Object[] finalPart = new Object[size + 1];
+            data = firstPart;
+            size = data.length;
+            add(element);
+            System.arraycopy(data, 0, finalPart, 0, size);
+            System.arraycopy(secondPart, 0, finalPart, size, secondPart.length);
+            data = finalPart;
+            size = firstPart.length + secondPart.length + 1;
+        }
     }
 
     public T remove(int index) {
