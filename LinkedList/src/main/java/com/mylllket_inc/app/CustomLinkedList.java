@@ -11,6 +11,7 @@ public class CustomLinkedList<T> implements List<T> {
     private int size = 0;
 
     public int size() {
+        size = 0;
         Node tempNode = head;
         while (tempNode.hasNext()) {
             tempNode = tempNode.next;
@@ -24,10 +25,18 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public boolean contains(Object o) {
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            if (tempNode.value.equals(o)) {
+                return true;
+            }
+        }
         return false;
     }
 
     public Iterator<T> iterator() {
+        //TODO: implement Iterator
         return null;
     }
 
@@ -37,7 +46,7 @@ public class CustomLinkedList<T> implements List<T> {
         int i = 0;
         while (tempNode.hasNext()) {
             tempNode = tempNode.next;
-            array[i] = tempNode;
+            array[i] = tempNode.value;
             i++;
         }
         return array;
@@ -62,10 +71,22 @@ public class CustomLinkedList<T> implements List<T> {
             }
         }
         tempNode.next = new Node(t);
+        tempNode.next.prev = tempNode;
         return true;
     }
 
     public boolean remove(Object o) {
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            if (tempNode.value.equals(o)) {
+                tempNode.prev.next = tempNode.next;
+                if (tempNode.hasNext()) {
+                    tempNode.next.prev = tempNode.prev;
+                }
+                return true;
+            }
+        }
         return false;
     }
 
