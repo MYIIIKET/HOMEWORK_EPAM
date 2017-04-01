@@ -119,9 +119,97 @@ public class CustomLinkedListTest {
         for (int i = 0; i < 10; i++) {
             a.add(i);
         }
-        assertEquals(10,a.size());
+        assertEquals(10, a.size());
         a.remove((Object) 4);
         assertFalse(a.contains(4));
         assertEquals(9, a.size());
     }
+
+    @Test
+    public void testThatWeCanClearList() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(10, a.size());
+        a.clear();
+        assertEquals(0, a.size());
+    }
+
+    @Test
+    public void testThatWeCanGetElementByIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(3, a.get(4));
+    }
+
+    @Test
+    public void testThatWeCantGetElementByIndexThatLessThanZero() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertNull(a.get(-1));
+    }
+
+    @Test
+    public void testThatWeCantGetElementByIndexThatMoreThanNumberOfAllElements() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertNull(a.get(11));
+    }
+
+    @Test
+    public void testThatWeCanGetLastAndFirstElementsByIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(0, a.get(1));
+        assertEquals(9, a.get(10));
+    }
+
+    @Test
+    public void testThatWeCanUpdateElemetnByIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(2, a.get(3));
+        assertTrue(a.contains(2));
+        assertNotNull(a.set(3, 5));
+        assertEquals(5, a.get(3));
+        assertFalse(a.contains(2));
+    }
+
+    @Test
+    public void testThatWeCanUpdateFirstElemetnsByIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(0, a.get(1));
+        assertTrue(a.contains(0));
+        assertNotNull(a.set(1, 11));
+        assertEquals(11, a.get(1));
+        assertFalse(a.contains(0));
+    }
+
+    @Test
+    public void testThatWeCanUpdateLastElemetnsByIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        assertEquals(9, a.get(10));
+        assertTrue(a.contains(9));
+        assertNotNull(a.set(10, 11));
+        assertEquals(11, a.get(10));
+        assertFalse(a.contains(9));
+    }
+
 }

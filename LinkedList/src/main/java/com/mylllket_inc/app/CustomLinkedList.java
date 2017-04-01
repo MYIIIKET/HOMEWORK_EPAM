@@ -111,14 +111,35 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public void clear() {
-
+        head = new Node<T>(null);
     }
 
     public T get(int index) {
+        if (index >= 0 && index <= size()) {
+            Node tempNode = head;
+            int i = 0;
+            while (i != index) {
+                if (!tempNode.hasNext()) {
+                    return null;
+                } else {
+                    tempNode = tempNode.next;
+                    i++;
+                }
+            }
+            return (T) tempNode.value;
+        }
         return null;
     }
 
     public T set(int index, T element) {
+        if (get(index) != null) {
+            Node tempNode = head;
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index--;
+            }
+            return (T) (tempNode.value = element);
+        }
         return null;
     }
 
