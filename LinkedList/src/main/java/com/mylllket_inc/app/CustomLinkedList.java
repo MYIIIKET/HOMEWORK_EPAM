@@ -8,13 +8,19 @@ import java.util.ListIterator;
 
 public class CustomLinkedList<T> implements List<T> {
     Node<T> head = new Node<T>(null);
+    private int size = 0;
 
     public int size() {
-        return 0;
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            size++;
+        }
+        return size;
     }
 
     public boolean isEmpty() {
-        return false;
+        return !head.hasNext();
     }
 
     public boolean contains(Object o) {
@@ -26,15 +32,37 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public Object[] toArray() {
-        return new Object[0];
+        Object[] array = new Object[size()];
+        Node tempNode = head;
+        int i = 0;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            array[i] = tempNode;
+            i++;
+        }
+        return array;
     }
 
     public <T1> T1[] toArray(T1[] a) {
+        head = new Node<T>(null);
+        head.next = null;
+        head.prev = null;
+        for (int i = 0; i < a.length; i++) {
+            //TODO: Array to linkedList
+        }
         return null;
     }
 
     public boolean add(T t) {
-        return false;
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            if (tempNode.value.equals(t)) {
+                return false;
+            }
+        }
+        tempNode.next = new Node(t);
+        return true;
     }
 
     public boolean remove(Object o) {
