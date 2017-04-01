@@ -28,15 +28,29 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (index >= 0 && index < size) ? true : false;
+            }
+
+            @Override
+            public T next() {
+                return (index + 1 < size) ? (T) data[++index] : null;
+            }
+        };
     }
 
     public Object[] toArray() {
-        return new Object[0];
+        Object[] newData = new Object[size];
+        System.arraycopy(data, 0, newData, 0, size);
+        return newData;
     }
 
     public <T1> T1[] toArray(T1[] a) {
-        return null;
+        return (T1[]) CustomArrayList.this.toArray();
     }
 
     public boolean add(T t) {
@@ -51,7 +65,8 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public boolean remove(Object o) {
-        for (int i = 0; i < data.length; i++) {
+        Objects.requireNonNull(o);
+        for (int i = 0; i < size; i++) {
             if (data[i].equals(o)) {
                 remove(i);
             }
@@ -60,23 +75,49 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public boolean containsAll(Collection<?> c) {
-        return false;
+        Objects.requireNonNull(c);
+        for (Object value : c) {
+            if (!contains(value)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        Objects.requireNonNull(c);
+        for (Object value : c) {
+            add((T) value);
+        }
+        return true;
     }
 
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+        Objects.requireNonNull(c);
+        for (Object value : c) {
+            add(index, (T) value);
+        }
+        return true;
     }
 
     public boolean removeAll(Collection<?> c) {
-        return false;
+        Objects.requireNonNull(c);
+        for (Object value : c) {
+            if (contains(value)) {
+                remove(value);
+            }
+        }
+        return true;
     }
 
     public boolean retainAll(Collection<?> c) {
-        return false;
+        Objects.requireNonNull(c);
+        for (int i = 0; i < size; i++) {
+            if (!c.contains(data[i])) {
+                remove(i);
+            }
+        }
+        return true;
     }
 
     public void clear() {
@@ -85,7 +126,7 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public T get(int index) {
-        if (index <= 0 || index > data.length)
+        if (index < 0 || index > data.length)
             return null;
         return (T) data[index];
     }
@@ -147,14 +188,68 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     public ListIterator<T> listIterator() {
-        return null;
+        return listIterator(0);
     }
 
     public ListIterator<T> listIterator(int index) {
-        return null;
+        return new ListIterator<T>() {
+            private int innerIndex = index;
+
+            @Override
+            public boolean hasNext() {
+                return (innerIndex < size) ? true : false;
+            }
+
+            @Override
+            public T next() {
+                return (innerIndex > 0 && innerIndex < size) ? (T) data[++innerIndex] : null;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return (innerIndex > 0) ? true : false;
+            }
+
+            @Override
+            public T previous() {
+                return (innerIndex > 0) ? (T) data[--innerIndex] : null;
+            }
+
+            @Override
+            public int nextIndex() {
+                return ++innerIndex;
+            }
+
+            @Override
+            public int previousIndex() {
+                return --innerIndex;
+            }
+
+            @Override
+            public void remove() {
+                CustomArrayList.this.remove(innerIndex);
+            }
+
+            @Override
+            public void set(T t) {
+                CustomArrayList.this.set(innerIndex, t);
+            }
+
+            @Override
+            public void add(T t) {
+                CustomArrayList.this.add(innerIndex, t);
+            }
+        };
     }
 
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        if (fromIndex > toIndex || fromIndex < 0 || toIndex > size) {
+            return null;
+        }
+        CustomArrayList newData = new CustomArrayList();
+        for (int i = fromIndex; i < toIndex; i++) {
+            newData.add(data[i]);
+        }
+        return newData;
     }
 }
