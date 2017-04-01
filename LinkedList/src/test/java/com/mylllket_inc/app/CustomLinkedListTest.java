@@ -4,7 +4,7 @@ package com.mylllket_inc.app;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.ListIterator;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -296,8 +296,8 @@ public class CustomLinkedListTest {
         assertTrue(b.hasPrevious());
         assertEquals(1, b.next());
         assertEquals(null, b.previous());
-        assertEquals(2,b.nextIndex());
-        assertEquals(0,b.previousIndex());
+        assertEquals(2, b.nextIndex());
+        assertEquals(0, b.previousIndex());
 
         assertTrue(a.contains(0));
         b.remove();
@@ -323,8 +323,8 @@ public class CustomLinkedListTest {
         assertTrue(b.hasPrevious());
         assertEquals(6, b.next());
         assertEquals(4, b.previous());
-        assertEquals(7,b.nextIndex());
-        assertEquals(5,b.previousIndex());
+        assertEquals(7, b.nextIndex());
+        assertEquals(5, b.previousIndex());
 
         assertTrue(a.contains(5));
         b.remove();
@@ -338,5 +338,170 @@ public class CustomLinkedListTest {
         b.add(12);
         assertTrue(a.contains(12));
     }
+
+    @Test
+    public void testThatWeCanGetIterator() {
+        CustomLinkedList a = new CustomLinkedList();
+        Iterator b = a.iterator();
+        assertNotNull(b);
+    }
+
+    @Test
+    public void testThatWeCanUseMethodsOfIterator() {
+        CustomLinkedList a = new CustomLinkedList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        Iterator b = a.iterator();
+        assertTrue(b.hasNext());
+        assertEquals(1, b.next());
+
+        assertTrue(a.contains(1));
+        b.remove();
+        assertFalse(a.contains(1));
+    }
+
+    @Test
+    public void testThatListCanContainCollection() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+            b.add(i);
+        }
+        b.remove(5);
+        assertTrue(a.containsAll(b));
+    }
+
+    @Test
+    public void testThatListCantContainCollection() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+            b.add(i);
+        }
+        b.add(11);
+        assertFalse(a.containsAll(b));
+    }
+
+    @Test
+    public void testThatWeCanAddCollectionToOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            b.add(i);
+        }
+        a.addAll(b);
+        for (int i = 0; i < 10; i++) {
+            assertTrue(a.contains(i));
+        }
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantAddNullCollectionToOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = null;
+        a.addAll(b);
+    }
+
+    @Test
+    public void testThatWeCanAddCollectionToOurListFromIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        for (int i = 10; i < 20; i++) {
+            b.add(i);
+        }
+        a.addAll(5, b);
+        for (int i = 0; i < 20; i++) {
+            assertTrue(a.contains(i));
+        }
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantAddNullCollectionToOurListFromIndex() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = null;
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.addAll(5, b);
+    }
+
+    @Test
+    public void testThatWeCanRemoveAllElementsOfCollectionFromOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        for (int i = 0; i < 10; i++) {
+            b.add(i);
+        }
+        a.removeAll(b);
+        assertEquals(0, a.size());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantRemoveAllElementsOfNullCollectionFromOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        List b = null;
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a.removeAll(b);
+    }
+
+    @Test
+    public void testThatWeCanRetainElementsOfCollectionInOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        a.add("white");
+        a.add("black");
+        a.add("red");
+
+        List b = new ArrayList();
+        b.add("green");
+        b.add("red");
+        b.add("white");
+
+        a.retainAll(b);
+        assertTrue(a.contains("white"));
+        assertTrue(a.contains("red"));
+        assertFalse(a.contains("black"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testThatWeCantRetainElementsOfNullCollectionInOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+        a.add("white");
+        a.add("black");
+        a.add("red");
+
+        List b = null;
+
+        a.retainAll(b);
+    }
+
+    @Test
+    public void testThatWeCanGetSubListFromOurList() {
+        CustomLinkedList a = new CustomLinkedList();
+
+        for (int i = 0; i < 10; i++) {
+            a.add(i);
+        }
+        a = (CustomLinkedList) a.subList(5, 10);
+
+        for (int i = 0; i < 10; i++) {
+            if (i > 4 && i < 10) {
+                assertTrue(a.contains(i));
+            } else {
+                assertFalse(a.contains(i));
+            }
+        }
+    }
+
 
 }

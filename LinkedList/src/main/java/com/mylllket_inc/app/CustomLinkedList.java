@@ -37,7 +37,7 @@ public class CustomLinkedList<T> implements List<T> {
 
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            int pointer = 0;
+            int pointer = 1;
 
             public boolean hasNext() {
                 return getNode(pointer).hasNext();
@@ -135,9 +135,12 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public boolean retainAll(Collection<?> c) {
-        for (Object value : c) {
-            if (!contains(value))
-                remove(value);
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            if (!c.contains(tempNode.value)) {
+                remove(tempNode.value);
+            }
         }
         return c != null;
     }
@@ -288,6 +291,15 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public List<T> subList(int fromIndex, int toIndex) {
+        if (get(fromIndex) != null && get(toIndex) != null) {
+            Node fromNode = getNode(fromIndex);
+            CustomLinkedList toReturn = new CustomLinkedList();
+            for (int i = 1; i < toIndex - fromIndex + 1; i++) {
+                fromNode = fromNode.next;
+                toReturn.add(fromNode.value);
+            }
+            return toReturn;
+        }
         return null;
     }
 
