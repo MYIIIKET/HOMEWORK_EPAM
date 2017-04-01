@@ -36,8 +36,21 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public Iterator<T> iterator() {
-        //TODO: implement Iterator
-        return null;
+        return new Iterator<T>() {
+            int pointer = 0;
+
+            public boolean hasNext() {
+                return getNode(pointer).hasNext();
+            }
+
+            public T next() {
+                return getNode(pointer++).next.value;
+            }
+
+            public void remove() {
+                CustomLinkedList.this.remove(pointer--);
+            }
+        };
     }
 
     public Object[] toArray() {
@@ -53,13 +66,14 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public <T1> T1[] toArray(T1[] a) {
-        head = new Node<T>(null);
-        head.next = null;
-        head.prev = null;
-        for (int i = 0; i < a.length; i++) {
-            //TODO: Array to linkedList
+        Object[] array = new Object[size()];
+        Node tempNode = head;
+        int i = 0;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            array[i] = tempNode.value;
         }
-        return null;
+        return (T1[]) array;
     }
 
     public boolean add(T t) {
@@ -91,23 +105,41 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object value : c) {
+            if (!contains(value)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        for (T value : c) {
+            add((T) value);
+        }
+        return c != null;
     }
 
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+        for (T value : c) {
+            add(index, (T) value);
+        }
+        return c != null;
     }
 
     public boolean removeAll(Collection<?> c) {
-        return false;
+        for (Object value : c) {
+            remove(value);
+        }
+        return c != null;
     }
 
     public boolean retainAll(Collection<?> c) {
-        return false;
+        for (Object value : c) {
+            if (!contains(value))
+                remove(value);
+        }
+        return c != null;
     }
 
     public void clear() {
@@ -221,7 +253,7 @@ public class CustomLinkedList<T> implements List<T> {
             }
 
             public T next() {
-                return getNode(pointer).next.value;
+                return getNode(pointer++).next.value;
             }
 
             public boolean hasPrevious() {
@@ -229,7 +261,7 @@ public class CustomLinkedList<T> implements List<T> {
             }
 
             public T previous() {
-                return getNode(pointer).prev.value;
+                return getNode(pointer--).prev.value;
             }
 
             public int nextIndex() {
