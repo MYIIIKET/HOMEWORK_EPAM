@@ -144,30 +144,130 @@ public class CustomLinkedList<T> implements List<T> {
     }
 
     public void add(int index, T element) {
-
+        if (get(index) != null) {
+            Node tempNode = head;
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index--;
+            }
+            Node newNode = new Node(element);
+            tempNode.prev.next = newNode;
+            newNode.prev = tempNode.prev;
+            newNode.next = tempNode;
+            tempNode.prev = newNode;
+        }
     }
 
     public T remove(int index) {
+        if (get(index) != null) {
+            Node tempNode = head;
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index--;
+            }
+            tempNode.prev.next = tempNode.next;
+            tempNode.next.prev = tempNode.prev;
+            tempNode.prev = null;
+            tempNode.next = null;
+            return (T) tempNode.value;
+        }
         return null;
     }
 
     public int indexOf(Object o) {
-        return 0;
+        Node tempNode = head;
+        int index = 0;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+            if (tempNode.value.equals(o)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {
-        return 0;
+        int index = size();
+        Node tempNode = head;
+        while (tempNode.hasNext()) {
+            tempNode = tempNode.next;
+        }
+        while (index >= 0 && tempNode.prev != null) {
+            if (tempNode.value.equals(o)) {
+                return index;
+            }
+            index--;
+            tempNode = tempNode.prev;
+        }
+        return -1;
     }
 
     public ListIterator<T> listIterator() {
-        return null;
+        return listIterator(0);
     }
 
-    public ListIterator<T> listIterator(int index) {
-        return null;
+    public ListIterator<T> listIterator(final int index) {
+
+        return new ListIterator<T>() {
+
+            private int pointer = index + 1;
+
+            public boolean hasNext() {
+                if (get(pointer) != null) {
+                    return getNode(pointer).hasNext();
+                }
+                return false;
+            }
+
+            public T next() {
+                return getNode(pointer).next.value;
+            }
+
+            public boolean hasPrevious() {
+                return getNode(pointer).hasPrev();
+            }
+
+            public T previous() {
+                return getNode(pointer).prev.value;
+            }
+
+            public int nextIndex() {
+                return pointer + 1;
+            }
+
+            public int previousIndex() {
+                return pointer - 1;
+            }
+
+            public void remove() {
+                CustomLinkedList.this.remove(pointer);
+                pointer = pointer - 1;
+            }
+
+            public void set(T t) {
+                CustomLinkedList.this.set(pointer + 1, t);
+            }
+
+            public void add(T t) {
+                CustomLinkedList.this.add(t);
+            }
+        };
     }
 
     public List<T> subList(int fromIndex, int toIndex) {
+        return null;
+    }
+
+    private Node<T> getNode(int index) {
+        if (get(index) != null) {
+            Node tempNode = head;
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index--;
+            }
+            return tempNode;
+        }
         return null;
     }
 
@@ -182,6 +282,10 @@ public class CustomLinkedList<T> implements List<T> {
 
         public boolean hasNext() {
             return next != null;
+        }
+
+        public boolean hasPrev() {
+            return prev != null;
         }
     }
 }
