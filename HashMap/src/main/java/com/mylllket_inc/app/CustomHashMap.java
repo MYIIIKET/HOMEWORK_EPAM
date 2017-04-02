@@ -185,22 +185,35 @@ public class CustomHashMap<K, V> implements Map<K, V> {
 
             @Override
             public boolean addAll(Collection<? extends K> c) {
-                return false;
+                for (Object key : c) {
+                    put((K) key, null);
+                }
+                return true;
             }
 
             @Override
             public boolean retainAll(Collection<?> c) {
-                return false;
+                for (int i = 0; i < currentSize; i++) {
+                    if (!c.contains(bucket[i].getKey())) {
+                        CustomHashMap.this.remove(bucket[i].getKey());
+                    }
+                }
+                return true;
             }
 
             @Override
             public boolean removeAll(Collection<?> c) {
-                return false;
+                for (Object key : c) {
+                    if (CustomHashMap.this.containsKey(key)) {
+                        CustomHashMap.this.remove(key);
+                    }
+                }
+                return true;
             }
 
             @Override
             public void clear() {
-                clear();
+                CustomHashMap.this.clear();
             }
         };
     }
