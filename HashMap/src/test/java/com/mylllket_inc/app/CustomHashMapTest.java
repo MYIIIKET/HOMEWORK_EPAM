@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -145,9 +146,34 @@ public class CustomHashMapTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testThatWeCantPutNullKey(){
+    public void testThatWeCantPutNullKey() {
         CustomHashMap a = new CustomHashMap();
-        a.put(null,12);
+        a.put(null, 12);
     }
+
+    @Test
+    public void testThatWeCanAddAllElementsFromMapToOurMap() {
+        CustomHashMap a = new CustomHashMap();
+        Map b = new HashMap<Integer, Integer>();
+        for (int i = 0; i < 18; i++) {
+            b.put(i, i);
+        }
+        a.putAll(b);
+        for (int i = 0; i < 16; i++) {
+            assertTrue(a.containsKey(i));
+        }
+    }
+
+    @Test
+    public void testThatWeCanClearOurMap() {
+        CustomHashMap a = new CustomHashMap();
+        for (int i = 0; i < 10; i++) {
+            a.put(i, i);
+        }
+        assertEquals(10, a.size());
+        a.clear();
+        assertEquals(0, a.size());
+    }
+
 
 }

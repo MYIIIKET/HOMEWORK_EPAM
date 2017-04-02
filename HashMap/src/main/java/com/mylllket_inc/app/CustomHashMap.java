@@ -105,14 +105,104 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     }
 
     public void putAll(Map<? extends K, ? extends V> m) {
+        for (Map.Entry<? extends K, ? extends V> entry : m.entrySet()) {
+            put(entry.getKey(), entry.getValue());
+        }
     }
 
     public void clear() {
-
+        bucket = new CustomEntry[CAPACITY];
+        currentSize = 0;
     }
 
     public Set<K> keySet() {
-        return null;
+        return new Set<K>() {
+            @Override
+            public int size() {
+                return currentSize;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return CustomHashMap.this.isEmpty();
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return CustomHashMap.this.containsValue(o);
+            }
+
+            @Override
+            public Iterator<K> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                Object[] keySet = new Object[currentSize];
+                for (int i = 0; i < currentSize; i++) {
+                    bucket[i].getKey();
+                }
+                return keySet;
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                Object[] keySet = new Object[currentSize];
+                for (int i = 0; i < currentSize; i++) {
+                    bucket[i].getKey();
+                }
+                return (T[]) keySet;
+            }
+
+            @Override
+            public boolean add(K k) {
+                put(k, null);
+                return true;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                CustomHashMap.this.remove(o);
+                return true;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                CustomEntry tempEntry;
+                for (Object element : c) {
+                    for (int i = 0; i < currentSize; i++) {
+                        tempEntry = bucket[i];
+                        while (tempEntry.hasNext()) {
+                            if (!tempEntry.getValue().equals(element)) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends K> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+                clear();
+            }
+        };
     }
 
     public Collection<V> values() {
