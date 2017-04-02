@@ -134,7 +134,22 @@ public class CustomHashMap<K, V> implements Map<K, V> {
 
             @Override
             public Iterator<K> iterator() {
-                return null;
+                return new Iterator<K>() {
+                    int index = 0;
+
+                    @Override
+                    public boolean hasNext() {
+                        if (index < size()) {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public K next() {
+                        return bucket[++index].getKey();
+                    }
+                };
             }
 
             @Override
@@ -219,7 +234,13 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     }
 
     public Collection<V> values() {
-        return null;
+        CustomEntry values = bucket[0];
+        List toReturn = new ArrayList();
+        while (values.hasNext()) {
+            toReturn.add(values.getValue());
+            values = values.next;
+        }
+        return toReturn;
     }
 
     public Set<Entry<K, V>> entrySet() {
