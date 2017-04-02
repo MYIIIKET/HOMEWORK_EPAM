@@ -375,7 +375,37 @@ public class CustomTreeMapTest {
         assertEquals(a.getRightChildByKey(2), 3);
         assertEquals(a.getLeftChildByKey(2), 1);
     }
-    
+
+
+    @Test
+    public void testThatWeCanFindValue() {
+        CustomTreeMap a = new CustomTreeMap();
+        a.put(1, 1);
+        a.put(3, 1);
+        a.put(2, 1);
+        a.put(5, 1);
+        a.put(4, 1);
+        a.put(7, 1);
+        a.put(6, 5);
+        a.put(9, 1);
+        a.put(8, 1);
+        assertTrue(a.containsValue(5));
+    }
+
+    @Test
+    public void testThatWeCanGetSizeOfOurTree() {
+        CustomTreeMap a = new CustomTreeMap();
+        a.put(1, 1);
+        a.put(3, 1);
+        a.put(2, 1);
+        a.put(5, 1);
+        a.put(4, 1);
+        a.put(7, 1);
+        a.put(6, 5);
+        a.put(9, 1);
+        a.put(8, 1);
+        assertEquals(9, a.size());
+    }
 
 
 }

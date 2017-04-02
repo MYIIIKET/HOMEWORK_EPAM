@@ -5,12 +5,14 @@ import java.util.*;
 public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> root;
+
     private int size = 0;
     private boolean direction = false;
 
     public int size() {
         return size;
     }
+
 
     public boolean isEmpty() {
         return root == null;
@@ -37,11 +39,62 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
     public boolean containsValue(Object value) {
+
+        return (containsOnRightBranch(goToRight(root), (V) value) || containsOnLeftBranch(goToLeft(root), (V) value));
+    }
+
+    private boolean containsOnLeftBranch(Node node, V value) {
+        while (node.parent != null) {
+            if (node.right != null) {
+                node = node.right;
+                if (node.value.equals(value)) {
+                    return true;
+                }
+                node = goToLeft(node);
+                return containsOnLeftBranch(node, value);
+            }
+            node = node.parent.parent;
+            if (node.value.equals(value)) {
+                return true;
+            }
+        }
         return false;
     }
 
+    private boolean containsOnRightBranch(Node node, V value) {
+        while (node.parent != null) {
+            if (node.right != null) {
+                node = node.right;
+                if (node.value.equals(value)) {
+                    return true;
+                }
+                node = goToLeft(node);
+                return containsOnRightBranch(node, value);
+            }
+            node = node.parent.parent;
+            if (node.value.equals(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Node goToLeft(Node node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    private Node goToRight(Node node) {
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node;
+    }
+
     public V get(Object key) {
-        return null;
+        return find(root, (K) key).value;
     }
 
     public boolean getColorByKey(K key) {
@@ -315,15 +368,83 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
 
     public void putAll(Map<? extends K, ? extends V> m) {
-
+        for (Map.Entry<? extends K, ? extends V> entry : m.entrySet()) {
+            put(entry.getKey(), entry.getValue());
+        }
     }
 
     public void clear() {
-
+        root = null;
+        size = 0;
     }
 
     public Set<K> keySet() {
-        return null;
+        return new Set<K>() {
+            @Override
+            public int size() {
+                return size;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return size == 0;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @Override
+            public Iterator<K> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                return null;
+            }
+
+            @Override
+            public boolean add(K k) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends K> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+        };
     }
 
     public Collection<V> values() {
