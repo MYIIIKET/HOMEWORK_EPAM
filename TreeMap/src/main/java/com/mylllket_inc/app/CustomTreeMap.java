@@ -39,45 +39,36 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
     public boolean containsValue(Object value) {
-
-        return (containsOnRightBranch(goToRight(root), (V) value) || containsOnLeftBranch(goToLeft(root), (V) value));
+        return (checkForValue(root.left, (V) value)||checkForValue(root.right, (V) value));
     }
 
-    private boolean containsOnLeftBranch(Node node, V value) {
-        while (node.parent != null) {
-            if (node.right != null) {
-                node = node.right;
-                if (node.value.equals(value)) {
+    private boolean checkForValue(Node node, V value) {
+        if (node.getValue().equals(value)) {
+            return true;
+        } else {
+            if (node.left != null && node.right != null) {
+                if (checkForValue(node.left, value) || checkForValue(node.right, value)) {
                     return true;
+                } else {
+                    return false;
                 }
-                node = goToLeft(node);
-                return containsOnLeftBranch(node, value);
-            }
-            node = node.parent.parent;
-            if (node.value.equals(value)) {
-                return true;
+            } else if (node.left != null) {
+                if (checkForValue(node.left, value)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (node.right != null) {
+                if (checkForValue(node.right, value)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
         return false;
     }
 
-    private boolean containsOnRightBranch(Node node, V value) {
-        while (node.parent != null) {
-            if (node.right != null) {
-                node = node.right;
-                if (node.value.equals(value)) {
-                    return true;
-                }
-                node = goToLeft(node);
-                return containsOnRightBranch(node, value);
-            }
-            node = node.parent.parent;
-            if (node.value.equals(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private Node goToLeft(Node node) {
         while (node.left != null) {
@@ -292,18 +283,18 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> remove(Node<K, V> node, K key, Node<K, V> parent) {
         if (key.equals(node.getKey())) {
-            node = balancedRemove(node, direction);
+//            node = balancedRemove(node, direction);
         } else {
             if (node.getKey().compareTo(key) > 0) {
                 direction = false;
                 Node tempNode = remove(node.left, key, node);
                 node.left = tempNode;
-                node.left = balance(node.left, direction);
+//                node.left = balance(node.left, direction);
             } else if (node.getKey().compareTo(key) < 0) {
                 direction = true;
                 Node tempNode = remove(node.right, key, node);
                 node.right = tempNode;
-                node.right = balance(node.right, direction);
+//                node.right = balance(node.right, direction);
             }
         }
         return node;
