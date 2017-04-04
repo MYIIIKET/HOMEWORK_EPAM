@@ -49,6 +49,10 @@ public class CustomHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V get(Object key) {
+        int index = getHash((K) key);
+        if (bucket[index] != null) {
+            return bucket[index].getValue();
+        }
         return null;
     }
 
@@ -246,6 +250,7 @@ public class CustomHashMap<K, V> implements Map<K, V> {
     public Set<Entry<K, V>> entrySet() {
         return null;
     }
+
 
     private int getHash(K key) {
         return Math.floorMod(key.hashCode(), CAPACITY);
