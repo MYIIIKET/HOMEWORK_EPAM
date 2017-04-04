@@ -380,16 +380,28 @@ public class CustomTreeMapTest {
     @Test
     public void testThatWeCanFindValue() {
         CustomTreeMap a = new CustomTreeMap();
-        a.put(1, 1);
-        a.put(3, 1);
-        a.put(2, 1);
-        a.put(5, 1);
-        a.put(4, 1);
-        a.put(7, 1);
-        a.put(6, 5);
+        a.put(10, 1);
         a.put(9, 1);
         a.put(8, 1);
-        assertTrue(a.containsValue(5));
+        a.put(7, 1);
+        a.put(6, 1);
+        a.put(5, 1);
+        a.put(4, 5);
+        a.put(3, 1);
+        a.put(2, 1);
+        a.put(1, 1);
+        a.put(11, 1);
+        a.put(12, 1);
+        a.put(13, 1);
+        a.put(14, 1);
+        a.put(15, 1);
+        a.put(16, 7);
+        a.put(17, 1);
+        a.put(18, 1);
+        a.put(19, 1);
+        a.put(20, 1);
+        a.put(21, 1);
+        assertTrue(a.containsValue(7));
     }
 
     @Test
