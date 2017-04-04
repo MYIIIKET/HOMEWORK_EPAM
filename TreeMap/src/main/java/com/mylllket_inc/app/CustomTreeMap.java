@@ -20,9 +20,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     public boolean containsKey(Object key) {
         Node tmp = find(root, (K) key);
-        if (tmp != null)
-            return true;
-        return false;
+        return tmp != null;
     }
 
     private Node<K, V> find(Node<K, V> node, K key) {
@@ -47,11 +45,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             return true;
         } else {
             if (node.left != null && node.right != null) {
-                if (checkForValue(node.left, value) || checkForValue(node.right, value)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return checkForValue(node.left, value) || checkForValue(node.right, value);
             } else if (node.left != null) {
                 if (checkForValue(node.left, value)) {
                     return true;
@@ -67,21 +61,6 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
             }
         }
         return false;
-    }
-
-
-    private Node goToLeft(Node node) {
-        while (node.left != null) {
-            node = node.left;
-        }
-        return node;
-    }
-
-    private Node goToRight(Node node) {
-        while (node.right != null) {
-            node = node.right;
-        }
-        return node;
     }
 
     public V get(Object key) {
@@ -175,18 +154,14 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
         } else if (parentColor && !uncleColor && nodeColor) {
             if (node.parent.key.compareTo(node.parent.parent.key) > 0) {
                 if (direction) {
-                    //TODO: When Node added to the right branch as right leaf
                     return rightRightRotate(node);
                 } else {
-                    //TODO: When Node added to the right branch as left leaf
                     return rightLeftRotate(node);
                 }
             } else {
                 if (direction) {
-                    //TODO: When Node added to the left branch as right leaf
                     return leftRightRotate(node);
                 } else {
-                    //TODO: When Node added to the left branch as left leaf
                     return leftLeftRotate(node);
                 }
             }
@@ -283,18 +258,16 @@ public class CustomTreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Node<K, V> remove(Node<K, V> node, K key, Node<K, V> parent) {
         if (key.equals(node.getKey())) {
-//            node = balancedRemove(node, direction);
+            node = balancedRemove(node, direction);
         } else {
             if (node.getKey().compareTo(key) > 0) {
                 direction = false;
                 Node tempNode = remove(node.left, key, node);
                 node.left = tempNode;
-//                node.left = balance(node.left, direction);
             } else if (node.getKey().compareTo(key) < 0) {
                 direction = true;
                 Node tempNode = remove(node.right, key, node);
                 node.right = tempNode;
-//                node.right = balance(node.right, direction);
             }
         }
         return node;
